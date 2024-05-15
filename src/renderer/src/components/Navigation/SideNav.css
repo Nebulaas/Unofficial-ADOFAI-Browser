@@ -1,0 +1,153 @@
+
+/* general side nav */
+#navSide {
+  background: rgba(0,0,0,0.15);
+  border-right: 2px solid;
+  border-color: rgba(0,0,0,0.15);
+  backdrop-filter: blur(5px);
+
+  height: calc(100vh - var(--top-nav-height-px));
+  width: var(--side-nav-width-px);
+  top: var(--top-nav-height-px);
+  box-sizing: border-box;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  z-index: 9999;
+
+  padding: 0 4px;
+
+  justify-content: space-between;
+  /*align-content: center;*/
+}
+
+/* style for when the side nav is open */
+.navSideHide {
+  left: calc(-1 * var(--side-nav-width-px));
+  transition: 0.5s ease-in-out;
+  transition-property: left;
+}
+
+/* style for when the side nav is closed */
+.navSideShow {
+  left: 0;
+  transition: 0.5s ease-in-out;
+  transition-property: left;
+}
+
+/* side nav text */
+.navSideText {
+  font-size: x-small;
+  font-family: Quicksand-Bold, sans-serif;
+  text-align: center;
+}
+
+/* side nav items */
+.navSideItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 7px 0 7px;
+  width: 64px;
+}
+
+/* side nav links */
+.navSideLink {
+  width: 64px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+/* side nav link icons */
+.navSideIcon {
+  width: 20px;
+  height: 20px;
+
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* top side nav style */
+#navSideTop {
+  margin-top: 4px;
+}
+
+/* bottom side nav style */
+#navSideBottom {
+  margin-bottom: 4px;
+}
+
+/* side nav settings icon when not hovered */
+#navSideSettings #sideSettingsIcon {
+  transform: rotate(0deg);
+  transition: ease-out 0.25s;
+}
+
+/* side nav settings icon when hovered */
+#navSideSettings:hover #sideSettingsIcon {
+  transform: rotate(90deg);
+  transition: ease-out 0.25s;
+}
+
+/* side nav items while active page */
+.sideActivePage > #sideAccountIcon, .sideActivePage > #sideAccountText,
+.sideActivePage > #sideBrowseIcon, .sideActivePage > #sideBrowseText,
+.sideActivePage > #sideSubmitIcon, .sideActivePage > #sideSubmitText,
+.sideActivePage > #sideCommunityIcon, .sideActivePage > #sideCommunityText,
+.sideActivePage > #sideLeaderboardIcon, .sideActivePage > #sideLeaderboardText,
+.sideActivePage > #sideAboutIcon, .sideActivePage > #sideAboutText,
+.sideActivePage > #sideSettingsIcon, .sideActivePage > #sideSettingsText {
+  color: #9271c2;
+  transition: ease-in-out 0.25s;
+}
+
+.sideInactivePage > #sideAccountIcon, .sideInactivePage > #sideAccountText,
+.sideInactivePage > #sideBrowseIcon, .sideInactivePage > #sideBrowseText,
+.sideInactivePage > #sideSubmitIcon, .sideInactivePage > #sideSubmitText,
+.sideInactivePage > #sideCommunityIcon, .sideInactivePage > #sideCommunityText,
+.sideInactivePage > #sideLeaderboardIcon, .sideInactivePage > #sideLeaderboardText,
+.sideInactivePage > #sideAboutIcon, .sideInactivePage > #sideAboutText,
+.sideInactivePage > #sideSettingsIcon, .sideInactivePage > #sideSettingsText {
+  color: white;
+  transition: ease-in-out 0.25s;
+}
+
+/* side nav items while hovered */
+#sideAccountLink:hover #sideAccountIcon, #sideAccountLink:hover #sideAccountText,
+#sideBrowseLink:hover #sideBrowseIcon, #sideBrowseLink:hover #sideBrowseText,
+#sideSubmitLink:hover #sideSubmitIcon, #sideSubmitLink:hover #sideSubmitText,
+#sideCommunityLink:hover #sideCommunityIcon, #sideCommunityLink:hover #sideCommunityText,
+#sideLeaderboardLink:hover #sideLeaderboardIcon, #sideLeaderboardLink:hover #sideLeaderboardText,
+#sideAboutLink:hover #sideAboutIcon, #sideAboutLink:hover #sideAboutText,
+#sideSettingsLink:hover #sideSettingsIcon, #sideSettingsLink:hover #sideSettingsText,
+#navSideLanguage:hover, #navSideHelp:hover  {
+  color: #ad8eda;
+  transition: ease-in-out 0.25s;
+}
+
+/* side nav items while not hovered */
+#navSideLanguage, #navSideHelp {
+  color: white;
+  transition: ease-in-out 0.25s;
+}
+
+
+
+/* temporary edits to indicate initial project scope */
+.sideInactivePage > #sideAccountIcon, .sideInactivePage > #sideAccountText,
+.sideInactivePage > #sideSubmitIcon, .sideInactivePage > #sideSubmitText,
+.sideInactivePage > #sideCommunityIcon, .sideInactivePage > #sideCommunityText,
+.sideInactivePage > #sideLeaderboardIcon, .sideInactivePage > #sideLeaderboardText,
+.sideInactivePage > #sideAboutIcon, .sideInactivePage > #sideAboutText,
+.sideInactivePage > #sideSettingsIcon, .sideInactivePage > #sideSettingsText,
+#navSideHelp {
+  color: grey;
+  transition: ease-in-out 0.25s;
+}

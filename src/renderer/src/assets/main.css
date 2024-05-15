@@ -1,0 +1,69 @@
+:root {
+  /* define screen height and width for dynamic media queries (these are only here for testing)*/
+  --screen-height: 594px;
+  --screen-width: 950px;
+
+  /* percentage values for navigation sizing and positioning */
+  --top-nav-height-percent: 8.5%;
+  --side-nav-width-percent: 5.5%;
+
+  /* ditto, but in px values */
+  --top-nav-height-px: 56px;
+  --side-nav-width-px: 74px;
+}
+
+html {
+  /* disables text highlighting */
+  :not(input):not(textarea),
+  :not(input):not(textarea)::after,
+  :not(input):not(textarea)::before {
+    -webkit-user-select: none;
+    user-select: none;
+    /*cursor: default;*/
+  }
+  /* disables outlines of elements with outlines by default, as it conflicts with app's visual style */
+  input, button, textarea, :focus {
+    outline: none;
+  }
+}
+
+body {
+  font-family: Quicksand-SemiBold, sans-serif;
+  color: white;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* style everything to have no preset spacing, prevents complications with positioning */
+canvas, caption, center, cite, code, dd, del, dfn, div, dl, dt, em, embed,
+fieldset, font, form, h1, h2, h3, h4, h5, h6, hr, i, iframe, img, ins, kbd,
+label, legend, li, menu, object, ol, p, pre, q, s, samp, small, span, strike,
+strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, u, ul, var {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* misc items */
+.tuf-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.faIcon {
+}
+
+.show {
+  display: initial;
+}
+
+.hide {
+  display: none;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}

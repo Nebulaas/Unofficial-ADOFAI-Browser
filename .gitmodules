@@ -1,0 +1,3 @@
+[submodule "T21C-assets"]
+	path = src/renderer/src/assets/T21C-assets
+	url = https://github.com/T21C/T21C-assets.git

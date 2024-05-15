@@ -1,0 +1,195 @@
+/* base style of top navbar */
+#navTop {
+  background: rgba(186,187,196,0.25);
+  border-bottom: 2px solid;
+  border-color: rgba(255,255,255,0.35);
+  backdrop-filter: blur(5px);
+
+  padding: 0 16px;
+  width: 100%;
+  height: var(--top-nav-height-px);
+  box-sizing: border-box;
+
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  z-index: 10000;
+  top: 0;
+
+  align-items: center;
+  justify-content: space-between;
+
+  font-family: Quicksand-Bold, "Arial Rounded MT Bold", sans-serif;
+}
+
+.navTopIconLarge {
+  width: 24px;
+  height: 24px;
+
+  text-decoration: none;
+}
+
+.navTopIconSmall {
+  width: 16px;
+  height: 16px;
+
+  text-decoration: none;
+}
+
+/* left section of top navbar */
+#navTopLeft {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* burger icon div */
+#navTopMenu {
+  display: inline-block;
+  box-sizing: border-box;
+
+  position: relative;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+
+  cursor: pointer;
+  border-radius: 100%;
+  transition: ease-in-out 0.375s;
+}
+
+#navTopMenu:hover {
+  background: rgba(216,217,226,0.25);
+  transition: ease-in-out 0.375s;
+}
+
+/* rotates the burger icon counter-clockwise */
+.spinLeft {
+  transform: rotate(0deg);
+  transition: ease-in-out 0.5s;
+}
+
+/* rotates the burger icon clockwise */
+.spinRight {
+  transform: rotate(180deg);
+  transition: ease-in-out 0.5s;
+}
+
+/* app logo/text div */
+#navTopHome {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+/* home logo link */
+#topHomeLink {
+  margin: 0 0 0 30px;
+}
+
+/* logo text */
+#topHomeLogo {
+  height: 30px;
+  padding: 13px 10px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  font-size: x-large;
+}
+
+/* logo planets png */
+#topLogoPlanets {
+  height: 25px;
+  width: 25px;
+}
+
+/* right section of top navbar */
+#navTopRight {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /*padding-right: 8px;*/
+}
+
+/* page link divs */
+#navTopBrowse, #navTopSubmit, #navTopAbout {
+  margin-left: 10px;
+  font-size: large;
+}
+
+/* page links */
+#topBrowseLink, #topSubmitLink, #topAboutLink {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  padding: 8.75px 5px;
+}
+
+/* page link icons */
+#topBrowseIcon, #topSubmitIcon, #topAboutIcon {
+  margin: 0 7px 0 0;
+
+  transform: rotate(0deg);
+  transition: ease-in-out 0.5s;
+}
+
+/* link icons on hover */
+#navTopBrowse:hover #topBrowseIcon,
+#navTopSubmit:hover #topSubmitIcon,
+#navTopAbout:hover #topAboutIcon {
+  transform: rotate(360deg);
+  transition: ease-in-out 0.5s;
+}
+
+/* link text when it is the active page */
+.topActivePage > #topBrowseText,
+.topActivePage > #topSubmitText,
+.topActivePage > #topAboutText {
+  border-bottom: solid #ad8eda 2px;
+  transition: ease-in-out 0.1s;
+}
+
+/* link text when it is not the active page inactive */
+.topInactivePage > #topBrowseText,
+.topInactivePage > #topSubmitText,
+.topInactivePage > #topAboutText {
+  border-bottom: solid transparent 0;
+  transition: ease-in-out 0.1s;
+}
+
+/* link text on hover */
+#navTopBrowse:hover #topBrowseText,
+#navTopSubmit:hover #topSubmitText,
+#navTopAbout:hover #topAboutText {
+  border-bottom: solid white 2px;
+  transition: ease-in-out 0.1s;
+}
+
+/* default user account icon */
+#navTopUser {
+  margin-left: 10px;
+
+  display: inline-block;
+  box-sizing: border-box;
+  position: relative;
+
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+
+  cursor: pointer;
+  border-radius: 100%;
+  transition: ease-in-out 0.375s;
+}
+
+
+
+
+/* temporary edits to indicate initial project scope */
+#topSubmitLink, #topAboutLink, #navTopUser {
+  color: grey;
+}
