@@ -1,7 +1,7 @@
 /* main page styles */
-#pageMain {
-  width: 100%;
-  height: 100%;
+#pageHome {
+  height: 100vh;
+  width: 100vw;
 
   position: relative;
   z-index: 9998;
@@ -10,25 +10,44 @@
   overflow-x: hidden;
 
   align-items: center;
-  justify-content: center;
+  /*justify-content: center;*/
+
   display: flex;
   flex-direction: column;
 }
 
-#pageHeader {
+#homeContent {
+  padding: 72px 0 0 0;
 
+  /*height: 100%;*/
+  /*width: 100%;*/
+  box-sizing: border-box;
+
+  align-items: center;
+  text-align: center;
 }
 
-#pageLogo {
+#homeHeader {
+}
+
+#homeHeaderLogo {
+}
+
+
+#homeLogoText {
+  height: 40px;
+  padding: 10px 0 30px 0;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
   font-family: Quicksand-Bold, "Arial Rounded MT Bold", sans-serif;
-  font-size: xx-large;
-  /*margin-bottom: 5px;*/
+  font-size: xxx-large;
 }
 
-#logoPlanets-Page {
-  height: 32px;
-  width: 30px;
-
-  position: relative;
-  top: 4.3px;
+#homeLogoPlanets {
+  margin-top: 4px;
+  height: 46px;
+  width: 46px;
 }

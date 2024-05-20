@@ -103,3 +103,28 @@
 
   </div>
 ---
+
+
+### 20/5/2024 [v0.0.0.5 prototype]
+- Account Login/Logout
+
+
+- Added:
+
+  <div style="background-color: rgba(3,215,0,0.33)">
+
+  - New login dialogue menu from top navigation account icon (currently no account functionality exists and is for flair)
+  - Added React contexts (still in early development)
+
+  </div>
+
+
+- Changed:
+
+  <div style="background-color: rgba(0,125,215,0.33)">
+
+  - Top Navigation Account icon no longer greyed out and now can be interacted with.
+
+  </div>
+
+---

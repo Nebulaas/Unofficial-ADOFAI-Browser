@@ -1,15 +1,18 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { app, shell, BrowserWindow, ipcMain, screen } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 
 function createWindow(): void {
-  const scaleFactor = screen.getPrimaryDisplay().scaleFactor
+  // const scaleFactor = screen.getPrimaryDisplay().scaleFactor
 
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 1920 / scaleFactor,
-    height: 1080 / scaleFactor,
+    width: 1920,
+    height: 1080,
     minWidth: 960,
     minHeight: 540,
 

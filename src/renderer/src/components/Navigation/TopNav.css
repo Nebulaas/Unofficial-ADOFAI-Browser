@@ -129,6 +129,11 @@
   padding: 8.75px 5px;
 }
 
+/* page link text */
+#topBrowseText, #topSubmitText, #topAboutText {
+  padding: 4px 0;
+}
+
 /* page link icons */
 #topBrowseIcon, #topSubmitIcon, #topAboutIcon {
   margin: 0 7px 0 0;
@@ -186,10 +191,15 @@
   transition: ease-in-out 0.375s;
 }
 
+#navTopUser:hover {
+  background: rgba(216,217,226,0.25);
+  transition: ease-in-out 0.375s;
+}
+
 
 
 
 /* temporary edits to indicate initial project scope */
-#topSubmitLink, #topAboutLink, #navTopUser {
+#topSubmitLink, #topAboutLink {
   color: grey;
 }
