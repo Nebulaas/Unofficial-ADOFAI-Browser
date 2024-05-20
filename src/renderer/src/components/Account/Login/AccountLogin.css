@@ -1,0 +1,118 @@
+.dialogueOverlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 19999;
+  opacity: 1;
+  color: black;
+}
+
+.loginDialogue {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20000;
+  max-width: 20rem;
+  width: 100%;
+  animation: none;
+
+  border: 3px solid rgba(255,255,255,0.35);
+  border-radius: 5px;
+  box-shadow: -5px 5px 10px 0 rgba(0,0,0,0.3);
+}
+
+.dialogue {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dialogueText {
+  font-size: small;
+  color: #bcacd5;
+}
+
+.options {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.optionText {
+  cursor: pointer;
+  font-size: medium;
+}
+
+.loginDialogue .dialogue {
+  background: rgba(186,187,196,0.25);
+  border-radius: 5px;
+
+  align-items: center;
+
+  padding: 10px 20px;
+}
+
+#loginDialogueText {
+  padding: 5px 0 20px;
+}
+
+/* dialogue options */
+.dialogueOption {
+  padding: 4px 10px;
+
+  background: rgba(186,187,196,0.25);
+  border: 2px solid rgba(255,255,255,0.35);
+  border-radius: 5px;
+  transition: ease-in-out 0.25s;
+
+  align-items: center;
+
+  cursor: pointer;
+}
+
+/* options when hovered */
+.dialogueOption:hover {
+  background: rgba(255,255,255,0.35);
+  border: 2px solid rgba(186,187,196,0.75);
+  transition: ease-in-out 0.25s;
+}
+
+/* margin so the options arent clumped together */
+#logoutOption {
+  margin: 0 20px;
+}
+
+/* dialogue open animation class */
+.dialogueScaleUp {
+  animation: scaleUpAnimation 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* dialogue close animation class */
+.dialogueScaleDown {
+  animation: scaleDownAnimation 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* dialogue open animation */
+@keyframes scaleUpAnimation {
+  from {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+/* dialogue close animation */
+@keyframes scaleDownAnimation {
+  from {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+}

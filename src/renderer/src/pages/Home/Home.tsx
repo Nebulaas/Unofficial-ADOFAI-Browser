@@ -2,15 +2,24 @@ import { ReactElement } from 'react'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { NavLink } from 'react-router-dom'
-import { SideNav, TopNav } from '../../components'
+// import { NavLink } from 'react-router-dom'
+import { SideNav, TopNav } from '../../components' /* Navigation Components */
 
-import "./Home.css"
+import './Home.css'
 
-import planets from "../../assets/images/ADOFAI_Planets.png"
+import planets from '../../assets/images/ADOFAI_Planets.png'
 
 const Home = (): ReactElement => {
 
+  // updates the welcome message
+  const curState = localStorage.getItem('accountLoginState') /*|| 'logout'*/
+  let username = curState
+
+  if (curState === 'login') {
+    username = 'Nebulaas'
+  } else if (curState === 'logout') {
+    username = 'User'
+  }
 
   return (
     <>
@@ -18,25 +27,60 @@ const Home = (): ReactElement => {
 
       <SideNav></SideNav>
 
+
       {/* Main section of page */}
-      <div id="pageMain">
+      <div id="pageHome">
 
-        {/* Page header, e.g. "Welcome to ADOFAI Browser..." */}
-        <div id="pageHeader">
+        {/* The page content */}
+        <div id="homeContent">
 
-          <div id="headerLogo" className="">
-            <h1 id="pageLogo" className="text">AD<img id="logoPlanets-Page" src={planets} alt="O"/>FAI Browser</h1>
+          {/* Page header, e.g. "Welcome to ADOFAI Browser..." */}
+          <header id="homeHeader">
+
+            <div id="homeHeaderLogo" className="">
+              <h1 id="homeLogoText" className="text">
+                AD
+                <img id="homeLogoPlanets" src={planets} alt="O" />
+                FAI Browser
+              </h1>
+            </div>
+
+            <div id="homeAccount">
+              {/*<p id="accountWelcome">Welcome, {Username}!</p>*/}
+              <p id="accountWelcome">Welcome, {username}!</p>
+
+            </div>
+
+          </header>
+
+          <div id="homeBody">
+
+          <div id="homeBrowse">
+
+            </div>
+
+            <div id="homeSubmissions">
+
+            </div>
+
+            <div id="homeLeaderboard">
+
+            </div>
+
+            <div id="homeCommunity">
+
+            </div>
+
           </div>
 
-          <div id="headerTitle">
-            <p>Home</p>
-          </div>
+          <footer id="homeFooter">
 
-        </div>
+          <div id="homeAbout">
 
-        <div id="pageContent">
 
-          <div></div>
+            </div>
+
+          </footer>
 
         </div>
 

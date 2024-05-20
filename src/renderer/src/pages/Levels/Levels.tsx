@@ -7,7 +7,7 @@ import { SideNav, TopNav } from '../../components'
 
 import './Levels.css'
 
-import planets from '../../assets/images/ADOFAI_Planets.png'
+// import planets from '../../assets/images/ADOFAI_Planets.png'
 
 const Levels = (): ReactElement => {
 
@@ -27,11 +27,11 @@ const Levels = (): ReactElement => {
         <div id="pageHeader">
 
           <div id="headerLogo">
-            <h1 id="pageLogo" className="text">
-              AD
-              <img id="logoPlanets-Page" src={planets} alt="O" />
-              FAI Browser
-            </h1>
+            {/*<h1 id="pageLogo" className="text">*/}
+            {/*  AD*/}
+            {/*  <img id="logoPlanets-Page" src={planets} alt="O" />*/}
+            {/*  FAI Browser*/}
+            {/*</h1>*/}
           </div>
 
           <div id="headerTitle">
