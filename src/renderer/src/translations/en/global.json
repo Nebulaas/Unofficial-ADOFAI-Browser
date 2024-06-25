@@ -1,0 +1,40 @@
+{
+  "topNav": {
+    "browse": "Browse",
+    "submit": "Submit",
+    "about": "About"
+  },
+
+  "sideNav": {
+    "account": "Account",
+    "browse": "Browse",
+    "submit": "Submit",
+    "community": "Community",
+    "leaderboard": "Leaderboard",
+    "about": "About",
+    "language": "Language",
+    "settings": "Settings",
+    "help": "Need Help?"
+  },
+
+  "loginDialogue": {
+    "prompt": "Login: What do you wish to do?",
+    "login": "Log In",
+    "logout": "Log Out",
+    "cancel": "Cancel"
+  },
+
+  "languageDialogue": {
+    "prompt": "Change Language:",
+    "cancel": "Cancel"
+  },
+
+  "home": {
+    "welcome": "Welcome",
+    "user": "User"
+  },
+
+  "browse": {
+    "pageTitle": "Levels"
+  }
+}

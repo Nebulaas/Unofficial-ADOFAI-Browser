@@ -1,32 +1,42 @@
-import { ReactElement } from 'react'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { ReactElement, useContext, useEffect } from 'react' /* , useCallback */
 // import { NavLink } from 'react-router-dom'
-import { SideNav, TopNav } from '../../components' /* Navigation Components */
+import { useTranslation } from 'react-i18next'
+
+import { AccountContext } from '../../context/Client/Account/Account'
+import { LanguageContext } from '../../context/Client/Language/Language'
+
+import { CombinedNav } from '../../components' /* Navigation Component */
 
 import './Home.css'
 
 import planets from '../../assets/images/ADOFAI_Planets.png'
 
 const Home = (): ReactElement => {
+  const { t } = useTranslation()
 
-  // updates the welcome message
-  const curState = localStorage.getItem('accountLoginState') /*|| 'logout'*/
-  let username = curState
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const { loginState } = useContext(AccountContext)
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const { language } = useContext(LanguageContext)
 
-  if (curState === 'login') {
-    username = 'Nebulaas'
-  } else if (curState === 'logout') {
-    username = 'User'
-  }
+  useEffect(() => {
+    if (loginState == 'login') {
+      document.getElementById('userText')!.innerHTML = ', ' + 'Nebulaas' + '!'
+    } else if (loginState == 'logout') {
+      document.getElementById('userText')!.innerHTML = ', ' + t('home.user') + '!'
+    }
+
+    console.log(loginState)
+  }, [loginState, language])
 
   return (
     <>
-      <TopNav></TopNav>
+      <CombinedNav></CombinedNav>
+      {/*<TopNav SetWelcomeText={SetWelcomeText} curState={curState} username={username}></TopNav>*/}
 
-      <SideNav></SideNav>
-
+      {/*<SideNav></SideNav>*/}
 
       {/* Main section of page */}
       <div id="pageHome">
@@ -47,8 +57,14 @@ const Home = (): ReactElement => {
 
             <div id="homeAccount">
               {/*<p id="accountWelcome">Welcome, {Username}!</p>*/}
-              <p id="accountWelcome">Welcome, {username}!</p>
-
+              <div id="accountWelcome">
+                <p id="welcomeText" style={{ margin: 0, padding: 0 }}>
+                  {t('home.welcome')}
+                </p>
+                <p id="userText" style={{ margin: 0, padding: 0 }}>
+                  , User!
+                </p>
+              </div>
             </div>
 
           </header>
