@@ -149,3 +149,17 @@ App Language Settings/Dialogue & Responsive Login Display
   - New `CombinedNav` Component to allow for simpler implementation & future shared navigation functionality
 
   </div>
+
+---
+
+### 25/6/2024 [v0.0.0.7 prototype]
+Oops, forgot to separate LanguageDialogue from SideNav!
+
+- Changed:
+
+  <div style="background-color: rgba(0,125,215,0.33)">
+
+  - Language Dialogue is now ACTUALLY an individual component
+
+  </div>
+---

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { forwardRef, useContext, useImperativeHandle, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
