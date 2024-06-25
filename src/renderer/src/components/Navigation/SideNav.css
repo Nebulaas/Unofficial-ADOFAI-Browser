@@ -18,7 +18,6 @@
   padding: 0 4px;
 
   justify-content: space-between;
-  /*align-content: center;*/
 }
 
 /* style for when the side nav is open */
@@ -37,7 +36,8 @@
 
 /* side nav text */
 .navSideText {
-  font-size: x-small;
+  padding-top: 2px;
+  font-size: 8pt;
   font-family: Quicksand-Bold, sans-serif;
   text-align: center;
 }

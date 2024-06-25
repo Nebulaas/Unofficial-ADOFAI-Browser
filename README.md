@@ -55,5 +55,7 @@ My (Nebulaa's) setup for this project (FOR MACOS SONOMA)
   pnpm install --save @fortawesome/free-regular-svg-icons
   pnpm install --save @fortawesome/free-brands-svg-icons
   pnpm i --save @fortawesome/react-fontawesome@latest
+  pnpm install i18next --save
+  pnpm install react-i18next i18next --save
   pnpm run dev
 ```

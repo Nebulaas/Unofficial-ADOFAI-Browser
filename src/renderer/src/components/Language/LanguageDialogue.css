@@ -7,13 +7,13 @@
   color: black;
 }
 
-.languageDialogue {
+.loginDialogue {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 20000;
-  max-width: 24rem;
+  max-width: 20rem;
   width: 100%;
   animation: none;
 
@@ -44,7 +44,7 @@
   font-size: medium;
 }
 
-.languageDialogue .dialogue {
+.loginDialogue .dialogue {
   background: rgba(186,187,196,0.25);
   border-radius: 5px;
 
@@ -53,7 +53,7 @@
   padding: 10px 20px;
 }
 
-#languageDialogueText {
+#loginDialogueText {
   padding: 5px 0 20px;
 }
 
@@ -79,7 +79,7 @@
 }
 
 /* margin so the options arent clumped together */
-#koreanOption {
+#logoutOption {
   margin: 0 20px;
 }
 

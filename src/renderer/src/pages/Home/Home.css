@@ -51,3 +51,8 @@
   height: 46px;
   width: 46px;
 }
+
+#accountWelcome {
+  display: flex;
+  justify-content: center;
+}

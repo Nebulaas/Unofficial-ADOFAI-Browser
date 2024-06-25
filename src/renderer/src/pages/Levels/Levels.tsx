@@ -3,6 +3,8 @@ import { ReactElement } from 'react'
 // @ts-ignore
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { NavLink } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+
 import { SideNav, TopNav } from '../../components'
 
 import './Levels.css'
@@ -10,7 +12,7 @@ import './Levels.css'
 // import planets from '../../assets/images/ADOFAI_Planets.png'
 
 const Levels = (): ReactElement => {
-
+  const { t } = useTranslation()
 
 
   return (
@@ -35,7 +37,9 @@ const Levels = (): ReactElement => {
           </div>
 
           <div id="headerTitle">
-            <p>Levels</p>
+            <p>
+              {t('browse.pageTitle')}
+            </p>
           </div>
 
         </div>

@@ -1,51 +1,21 @@
-import { ReactElement, useContext, useState } from 'react'
+// react imports
+import React, { ReactElement } from 'react'
 import { NavLink } from 'react-router-dom'
+
+// font awesome imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
-// import { LoginDialogue } from '../'
-import { AccountContext } from '../../context/Client/Account/Account'
+import { useTranslation } from 'react-i18next' // language import
 
 import './TopNav.css'
-import '../Account/Login/AccountLogin.css'
 
 import planets from '../../assets/images/ADOFAI_Planets.png'
 
+import AccountLogin from '../Account/Login/AccountLogin' // login dialogue component
+
 const TopNav = (): ReactElement => {
-
-  const [openDialogue, setOpenDialogue] = useState(false)
-
-  function changeDialogueState(): void {
-    setOpenDialogue(!openDialogue)
-  }
-
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { loginState, setLoginState } = useContext(AccountContext)
-
-  const welcomeText = document.getElementById('accountWelcome')!
-
-  function UpdateWelcomeText(newState): void {
-    switch (newState) {
-      case 'login': {
-        welcomeText.innerHTML = 'Welcome, Nebulaas!'
-        break
-      }
-      case 'logout': {
-        welcomeText.innerHTML = 'Welcome, User!'
-        break
-      }
-      default:
-        break
-    }
-  }
-
-  function DoLogin(toState): void {
-    setLoginState(toState)
-    changeDialogueState()
-    UpdateWelcomeText(toState)
-  }
+  const { t } = useTranslation()
 
   function activateNavSide(): void {
     /* When the triple bar icon is clicked, this will open/close the left-side navbar and animate the icon accordingly. */
@@ -71,51 +41,18 @@ const TopNav = (): ReactElement => {
     }
   }
 
+  const loginDialogueRef = React.useRef(null)
+
+  function openLoginDialogue(): void {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    loginDialogueRef.current.openDialogue()
+  }
+
   return (
     <>
-
-      {/* background overlay element for dialogue box */}
-      <div
-        className="dialogueOverlay"
-        style={{ display: openDialogue ? 'block' : 'none' }}
-        onClick={changeDialogueState}
-      ></div>
-
-      {/* login/logout dialogue box */}
-      <div
-        className={`loginDialogue ${openDialogue ? 'dialogueScaleUp' : 'dialogueScaleDown'}`}
-        style={{ display: openDialogue ? 'block' : 'none' }}
-      >
-        <div className={'dialogue'}>
-
-          <p id="loginDialogueText" className="dialogueText">
-            Login: What do you wish to do?
-          </p>
-
-          <div className={'options'}>
-
-            <div id="loginOption" className="dialogueOption" onClick={() => DoLogin('login')}>
-              <p id="loginOptionText" className="optionText">
-                Log In
-              </p>
-            </div>
-
-            <div id="logoutOption" className="dialogueOption" onClick={() => DoLogin('logout')}>
-              <p id="logoutOptionText" className="optionText">
-                Log Out
-              </p>
-            </div>
-
-            <div id="cancelOption" className="dialogueOption" onClick={changeDialogueState}>
-              <p id="cancelOptionText" className="optionText">
-                Cancel
-              </p>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
+      {/* updateWelcomeText={updateWelcomeText} */}
+      <AccountLogin ref={loginDialogueRef}></AccountLogin>
 
       {/* Top Section of Window */}
       <div id="navTop">
@@ -138,7 +75,7 @@ const TopNav = (): ReactElement => {
             <NavLink id="topHomeLink" className="navTopLink" to="/">
               <h1 id="topHomeLogo">
                 AD
-                <img id="topLogoPlanets" src={planets} alt="O"/>
+                <img id="topLogoPlanets" src={planets} alt="O" />
                 FAI Browser
               </h1>
             </NavLink>
@@ -154,7 +91,7 @@ const TopNav = (): ReactElement => {
           <div id="navTopBrowse" className="navTopItem">
             <NavLink
               id="topBrowseLink"
-              className={({isActive}) =>
+              className={({ isActive }) =>
                 isActive ? 'navTopLink topActivePage' : 'navTopLink topInactivePage'
               }
               to="/levels"
@@ -165,7 +102,9 @@ const TopNav = (): ReactElement => {
                 className="navTopIconSmall faIcon"
                 size="sm"
               />
-              <p id="topBrowseText" className="navTopText">Browse</p>
+              <p id="topBrowseText" className="navTopText">
+                {t('topNav.browse')}
+              </p>
             </NavLink>
           </div>
 
@@ -173,7 +112,7 @@ const TopNav = (): ReactElement => {
           <div id="navTopSubmit" className="navTopItem">
             <NavLink
               id="topSubmitLink"
-              className={({isActive}) =>
+              className={({ isActive }) =>
                 isActive ? 'navTopLink topActivePage' : 'navTopLink topInactivePage'
               }
               to="/submissions"
@@ -184,7 +123,9 @@ const TopNav = (): ReactElement => {
                 className="navTopIconSmall faIcon"
                 size="sm"
               />
-              <p id="topSubmitText" className="navTopText">Submit</p>
+              <p id="topSubmitText" className="navTopText">
+                {t('topNav.submit')}
+              </p>
             </NavLink>
           </div>
 
@@ -192,7 +133,7 @@ const TopNav = (): ReactElement => {
           <div id="navTopAbout" className="navTopItem">
             <NavLink
               id="topAboutLink"
-              className={({isActive}) =>
+              className={({ isActive }) =>
                 isActive ? 'navTopLink topActivePage' : 'navTopLink topInactivePage'
               }
               to="/about"
@@ -203,11 +144,13 @@ const TopNav = (): ReactElement => {
                 className="navTopIconSmall faIcon"
                 size="sm"
               />
-              <p id="topAboutText" className="navTopText">About</p>
+              <p id="topAboutText" className="navTopText">
+                {t('topNav.about')}
+              </p>
             </NavLink>
           </div>
 
-          <div id="navTopUser" className="navTopItem" onClick={changeDialogueState}> {/*onClick={changeDialogState}*/}
+          <div id="navTopUser" className="navTopItem" onClick={openLoginDialogue}>
             <FontAwesomeIcon
               icon={'fa-solid fa-circle-user' as IconProp}
               id="topAccountIcon"

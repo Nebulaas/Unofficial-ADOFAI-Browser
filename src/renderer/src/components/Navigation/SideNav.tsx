@@ -1,18 +1,34 @@
-import { ReactElement } from 'react'
+import React, { ReactElement } from 'react'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
+import { useTranslation } from 'react-i18next'
+
 import './SideNav.css'
+
+import LanguageDialogue from '../Language/LanguageDialogue'
 
 const SideNav = (): ReactElement => {
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const { t } = useTranslation()
+
+  const languageDialogueRef = React.useRef(null)
+
+  function openLanguageDialogue(): void {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    languageDialogueRef.current.openDialogue()
+  }
 
   return (
     <>
+
+      <LanguageDialogue ref={languageDialogueRef}></LanguageDialogue>
 
       {/* Left Side of Window */}
       <div id="navSide" className="navSideShow">
@@ -35,7 +51,9 @@ const SideNav = (): ReactElement => {
                 className="navSideIcon faIcon"
                 size="xl"
               />
-              <p id="sideAccountText" className="navSideText">Account</p>
+              <p id="sideAccountText" className="navSideText">
+                {t('sideNav.account')}
+              </p>
             </NavLink>
           </div>
 
@@ -54,7 +72,9 @@ const SideNav = (): ReactElement => {
                 className="navSideIcon faIcon"
                 size="xl"
               />
-              <p id="sideBrowseText" className="navSideText">Browse</p>
+              <p id="sideBrowseText" className="navSideText">
+                {t('sideNav.browse')}
+              </p>
             </NavLink>
           </div>
 
@@ -73,7 +93,9 @@ const SideNav = (): ReactElement => {
                 className="navSideIcon faIcon"
                 size="xl"
               />
-              <span id="sideSubmitText" className="navSideText">Submit</span>
+              <span id="sideSubmitText" className="navSideText">
+                {t('sideNav.submit')}
+              </span>
             </NavLink>
           </div>
 
@@ -92,7 +114,9 @@ const SideNav = (): ReactElement => {
                 className="navSideIcon faIcon"
                 size="lg"
               />
-              <p id="sideCommunityText" className="navSideText">Community</p>
+              <p id="sideCommunityText" className="navSideText">
+                {t('sideNav.community')}
+              </p>
             </NavLink>
           </div>
 
@@ -111,7 +135,9 @@ const SideNav = (): ReactElement => {
                 className="navSideIcon faIcon"
                 size="xl"
               />
-              <p id="sideLeaderboardText" className="navSideText">Leaderboard</p>
+              <p id="sideLeaderboardText" className="navSideText">
+                {t('sideNav.leaderboard')}
+              </p>
             </NavLink>
           </div>
 
@@ -130,7 +156,9 @@ const SideNav = (): ReactElement => {
                 className="navSideIcon faIcon"
                 size="xl"
               />
-              <p id="sideAboutText" className="navSideText">About</p>
+              <p id="sideAboutText" className="navSideText">
+                {t('sideNav.about')}
+              </p>
             </NavLink>
           </div>
 
@@ -140,14 +168,16 @@ const SideNav = (): ReactElement => {
         <div id="navSideBottom" className="navSideSection">
 
           {/* language icon */}
-          <div id="navSideLanguage" className="navSideItem">
+          <div id="navSideLanguage" className="navSideItem" onClick={openLanguageDialogue}>
             <FontAwesomeIcon
               icon={'fa-solid fa-language' as IconProp}
               id="sideLanguageIcon"
               className="navSideIcon faIcon"
               size="lg"
             />
-            <p id="sideLanguageText" className="navSideText">Language</p>
+            <p id="sideLanguageText" className="navSideText">
+              {t('sideNav.language')}
+            </p>
           </div>
 
           {/* settings icon */}
@@ -165,7 +195,9 @@ const SideNav = (): ReactElement => {
                 className="navSideIcon faIcon"
                 size="xl"
               />
-              <p id="sideSettingsText" className="navSideText">Settings</p>
+              <p id="sideSettingsText" className="navSideText">
+                {t('sideNav.settings')}
+              </p>
             </NavLink>
           </div>
 
@@ -177,7 +209,9 @@ const SideNav = (): ReactElement => {
               className="navSideIcon faIcon"
               size="xl"
             />
-            <p id="sideHelpText" className="navSideText">Want Help?</p>
+            <p id="sideHelpText" className="navSideText">
+              {t('sideNav.help')}
+            </p>
           </div>
 
           {/* report icon */}

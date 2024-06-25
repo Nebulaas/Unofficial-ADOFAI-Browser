@@ -1,14 +1,17 @@
 import { forwardRef, useContext, useImperativeHandle, useState } from 'react'
+
+import i18next from 'i18next'
 import { useTranslation } from 'react-i18next'
 
-import { AccountContext } from '../../../context/Client/Account/Account'
+import '../Language/LanguageDialogue.css'
 
-import './AccountLogin.css'
+import { LanguageContext } from '../../context/Client/Language/Language'
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 // eslint-disable-next-line react/display-name
-const LoginDialogue = forwardRef((props, ref) => {
+const LanguageDialogue = forwardRef((props, ref) => {
+
   const { t } = useTranslation()
 
   const [openDialogue, setOpenDialogue] = useState(false)
@@ -19,10 +22,12 @@ const LoginDialogue = forwardRef((props, ref) => {
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  const { setLoginState } = useContext(AccountContext)
+  const { setLanguage } = useContext(LanguageContext)
 
-  function DoLogin(toState): void {
-    setLoginState(toState)
+  function handleChangeLanguage(newLanguage): void {
+    i18next.changeLanguage(newLanguage).then(() => {
+      setLanguage(newLanguage)
+    })
     changeDialogueState()
   }
 
@@ -42,34 +47,34 @@ const LoginDialogue = forwardRef((props, ref) => {
         onClick={changeDialogueState}
       ></div>
 
-      {/* login/logout dialogue box */}
+      {/* language change dialogue box */}
       <div
-        className={`loginDialogue ${openDialogue ? 'dialogueScaleUp' : 'dialogueScaleDown'}`}
+        className={`languageDialogue ${openDialogue ? 'dialogueScaleUp' : 'dialogueScaleDown'}`}
         style={{ display: openDialogue ? 'block' : 'none' }}
       >
         <div className={'dialogue'}>
 
-          <p id="loginDialogueText" className="dialogueText">
-            {t('loginDialogue.prompt')}
+          <p id="languageDialogueText" className="dialogueText">
+            {t('languageDialogue.prompt')}
           </p>
 
           <div className={'options'}>
 
-            <div id="loginOption" className="dialogueOption" onClick={() => DoLogin('login')}>
-              <p id="loginOptionText" className="optionText">
-                {t('loginDialogue.login')}
+            <div id="englishOption" className="dialogueOption" onClick={() => handleChangeLanguage('en')}>
+              <p id="englishOptionText" className="optionText">
+                English (en)
               </p>
             </div>
 
-            <div id="logoutOption" className="dialogueOption" onClick={() => DoLogin('logout')}>
-              <p id="logoutOptionText" className="optionText">
-                {t('loginDialogue.logout')}
+            <div id="koreanOption" className="dialogueOption" onClick={() => handleChangeLanguage('kr')}>
+              <p id="koreanOptionText" className="optionText">
+                한국어 (ko)
               </p>
             </div>
 
             <div id="cancelOption" className="dialogueOption" onClick={changeDialogueState}>
               <p id="cancelOptionText" className="optionText">
-                {t('loginDialogue.cancel')}
+                {t('languageDialogue.cancel')}
               </p>
             </div>
 
@@ -77,9 +82,8 @@ const LoginDialogue = forwardRef((props, ref) => {
 
         </div>
       </div>
-
     </>
   )
 })
 
-export default LoginDialogue
+export default LanguageDialogue

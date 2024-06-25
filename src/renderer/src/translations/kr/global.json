@@ -1,0 +1,40 @@
+{
+  "topNav": {
+    "browse": "레벨",
+    "submit": "제출",
+    "about": "우리에 대해"
+  },
+
+  "sideNav": {
+    "account": "고객",
+    "browse": "레벨",
+    "submit": "제출",
+    "community": "커뮤니티 센터",
+    "leaderboard": "리더보드",
+    "about": "우리에 대해",
+    "language": "언어",
+    "settings": "조절",
+    "help": "도움"
+  },
+
+  "loginDialogue": {
+    "prompt": "로그인: 무엇을 하시겠습니까?",
+    "login": "로그인",
+    "logout": "로그 아웃",
+    "cancel": "취소"
+  },
+
+  "languageDialogue": {
+    "prompt": "언어 변경:",
+    "cancel": "취소"
+  },
+
+  "home": {
+    "welcome": "환영합니다",
+    "user": "사용자님"
+  },
+
+  "browse": {
+    "pageTitle": "레벨"
+  }
+}

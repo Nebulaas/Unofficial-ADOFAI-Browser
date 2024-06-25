@@ -1,11 +1,10 @@
 ### 20/3/2024 [v0.0.0.1 prototype]
-- Initial Commit
+Initial Commit
 
 ---
 
 ### 21/3/2024 [v0.0.0.2 prototype]
-- App Outline Created
-
+App Outline Created
 
 - Added:
 
@@ -35,8 +34,7 @@
 ---
 
 ### 24/4/2024 [v0.0.0.3 prototype]
-- Styling Overhaul & New Navbar Stuff
-
+Styling Overhaul & New Navbar Stuff
 
 - Added:
 
@@ -69,8 +67,7 @@
 ---
 
 ### 15/5/2024 [v0.0.0.4 prototype]
-- Full Remake & Completed Navigation
-
+Full Remake & Completed Navigation
 
 - Added:
 
@@ -106,8 +103,7 @@
 
 
 ### 20/5/2024 [v0.0.0.5 prototype]
-- Account Login/Logout
-
+Account Login/Logout
 
 - Added:
 
@@ -127,4 +123,43 @@
 
   </div>
 
+---
+
+### 25/6/2024 [v0.0.0.6 prototype]
+App Language Settings/Dialogue & Responsive Login Display
+
+- Added:
+
+  <div style="background-color: rgba(3,215,0,0.33)">
+
+  - i18next translation functionality implemented
+  - English and Korean translation jsons added (Korean will be fixed, currently uses Google Translate results)
+  - App Language can now be changed between English and Korean (more to come at a later point)
+  - Responsive Text on Home Page displaying login status (works with languages)
+
+  </div>
+
+
+- Changed:
+
+  <div style="background-color: rgba(0,125,215,0.33)">
+
+  - Side Navigation Language icon no longer greyed out and now can be interacted with.
+  - Language & Login Dialogues are now individual components for better readability
+  - New `CombinedNav` Component to allow for simpler implementation & future shared navigation functionality
+
+  </div>
+
+---
+
+### 25/6/2024 [v0.0.0.7 prototype]
+Oops, forgot to separate LanguageDialogue from SideNav!
+
+- Changed:
+
+  <div style="background-color: rgba(0,125,215,0.33)">
+
+  - Language Dialogue is now ACTUALLY an individual component
+
+  </div>
 ---

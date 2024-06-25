@@ -5,9 +5,9 @@ import { ReactElement } from 'react'
 import { NavLink } from 'react-router-dom'
 import { SideNav, TopNav } from '../../components'
 
-import "./Submissions.css"
+import './Submissions.css'
 
-import planets from "../../assets/images/ADOFAI_Planets.png"
+import planets from '../../assets/images/ADOFAI_Planets.png'
 
 const Submissions = (): ReactElement => {
 

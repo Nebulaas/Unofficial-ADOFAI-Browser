@@ -5,9 +5,9 @@ import { ReactElement } from 'react'
 import { NavLink } from 'react-router-dom'
 import { SideNav, TopNav } from '../../components'
 
-import "./Community.css"
+import './Community.css'
 
-import planets from "../../assets/images/ADOFAI_Planets.png"
+import planets from '../../assets/images/ADOFAI_Planets.png'
 
 const Community = (): ReactElement => {
 
