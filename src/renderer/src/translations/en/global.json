@@ -9,12 +9,12 @@
     "account": "Account",
     "browse": "Browse",
     "submit": "Submit",
-    "community": "Community",
-    "leaderboard": "Leaderboard",
+    "social": "Social",
+    "rankings": "Rankings",
     "about": "About",
     "language": "Language",
     "settings": "Settings",
-    "help": "Need Help?"
+    "help": "Help"
   },
 
   "loginDialogue": {
@@ -29,12 +29,108 @@
     "cancel": "Cancel"
   },
 
+
+
   "home": {
     "welcome": "Welcome",
     "user": "User"
   },
 
-  "browse": {
+
+
+  "levels": {
+    "ratingSystem": {
+      "": "",
+
+      "tooltip": {
+        "button": "Change Rating System"
+      }
+    },
+
+    "help": {
+      "tooltip": {
+        "button": "Search Features Explanation"
+      }
+    },
+
+    "display": {
+      "tooltip": {
+        "toggle": "Display Options"
+      }
+    },
+
+    "search": {
+      "placeholder": "Search for: #ID, Artist Name, Creator(s) Name, Song Name...",
+
+      "tooltip": {
+
+      }
+    },
+
+    "filter": {
+      "header": "Filter",
+
+      "params": {
+        "difficulty": "Difficulty"
+      },
+
+      "tooltip": {
+        "toggle": "Filter",
+
+        "params": {
+          "difficulty": "Difficulty"
+        }
+      }
+    },
+
+    "sort": {
+      "header": "Sort",
+
+      "params": {
+        "recent": "Recent",
+        "difficulty": "Difficulty",
+        "random": "Random"
+      },
+
+      "tooltip": {
+        "toggle": "Sort",
+
+        "params": {
+          "recentAsc": "Recent Ascending\n(Old -> New)",
+          "recentDsc": "Recent Descending\n(New -> Old)",
+          "difficultyAsc": "Difficulty Ascending\n(Low -> High)",
+          "difficultyDsc": "Difficulty Descending\n(High -> Low)",
+          "random": "Random"
+        }
+      }
+    },
+
+    "tags": {
+      "tooltip": {
+        "toggle": "Tags"
+      }
+    },
+
+    "reset": {
+      "tooltip": {
+        "button": "Reset All Parameters"
+      }
+    },
+
+    "results": {
+      "display": {
+        "loading": "Getting results!",
+        "end": "No more results!",
+        "error": "Invalid Search Terms!"
+      },
+
+      "cards": {
+        "difficulty": "Difficulty",
+        "creator": "Creator(s)",
+        "clears": "Clears"
+      }
+    },
+
     "pageTitle": "Levels"
   }
 }

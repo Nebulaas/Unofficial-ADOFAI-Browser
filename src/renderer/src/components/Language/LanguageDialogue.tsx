@@ -11,7 +11,6 @@ import { LanguageContext } from '../../context/Client/Language/Language'
 // @ts-ignore
 // eslint-disable-next-line react/display-name
 const LanguageDialogue = forwardRef((props, ref) => {
-
   const { t } = useTranslation()
 
   const [openDialogue, setOpenDialogue] = useState(false)
@@ -39,13 +38,12 @@ const LanguageDialogue = forwardRef((props, ref) => {
 
   return (
     <>
-
       {/* background overlay element for dialogue box */}
       <div
         className="dialogueOverlay"
         style={{ display: openDialogue ? 'block' : 'none' }}
         onClick={changeDialogueState}
-      ></div>
+      />
 
       {/* language change dialogue box */}
       <div

@@ -162,4 +162,64 @@ Oops, forgot to separate LanguageDialogue from SideNav!
   - Language Dialogue is now ACTUALLY an individual component
 
   </div>
+
 ---
+
+### 23/8/2024 [v0.0.0.8 prototype]
+#### (Been a while, huh?)
+Browse Page, Search, Level Results & more!
+
+- Added:
+
+  <div style="background-color: rgba(3,215,0,0.33)">
+
+  - Fully fledged Browse Page w/ text query, filters, sorting, and level results display
+  - Implemented a CSP (Content Security Policy) for security and access to external APIs
+  - In-depth difficulty converter (`DifficultyContext`) that can convert between:
+    - TUF's PGU System
+    - TUF/T21+C's Backend Difficulties
+    - TUF's Legacy System (T21+C System)
+    - ADOFAI.GG's Difficulties
+    - & a system for ADOFAI Browser (name still in dev)
+    - Oh, and a difficulty`INDEX`too (subject to change)
+  - Dynamically updatable`DifficultyIcon`component
+  - Level data download via JSON file
+  - More translations for added text
+  - Lots of code comments and documentation (more TBA)
+  - `LevelContext`to handle search/query data
+
+  </div>
+
+
+- Changed:
+
+  <div style="background-color: rgba(0,125,215,0.33)">
+
+  - Updated README.md with section links & extra notes
+  - MANY miscellaneous style edits and minor additions
+  - Replaced the Nav parts with the previously added `CombinedNav`component
+
+  </div>
+
+
+
+- To Do **/** In Development:
+
+  <div style="background-color: rgba(255,207,0,0.33)">
+
+  - Rating System Selector
+  - Level Tags & Tags Menu
+  - Level Results Display Options
+  - Help/Explanation Features
+  - Add unaccounted-for/undefined difficulties to the difficulty converter
+  - Sort by clear count
+  - **Difficulty Filter**
+    - Add options to display censored, unranked, impossible, and other misc difficulties
+    - Add
+  - Add ADOFAI.GG's rated levels to the search & make said levels be compatible with the current search system.
+    I.e. levels that are on both TUF & GG only show one copy.
+
+  </div>
+
+---
+

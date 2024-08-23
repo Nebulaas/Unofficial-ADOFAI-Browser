@@ -3,7 +3,7 @@ import { ReactElement } from 'react'
 // @ts-ignore
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { NavLink } from 'react-router-dom'
-import { SideNav, TopNav } from '../../components'
+import { CombinedNav } from '../../components'
 
 import './About.css'
 
@@ -14,9 +14,8 @@ const About = (): ReactElement => {
 
   return (
     <>
-      <TopNav></TopNav>
+      <CombinedNav></CombinedNav>
 
-      <SideNav></SideNav>
 
       {/* Main section of page */}
       <div id="pageMain">

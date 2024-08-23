@@ -106,3 +106,12 @@ build/
 
 # vscode folder
 .vscode
+
+
+# unused files & code
+src/renderer/src/components/Levels/DifficultyDropdown/DifficultyDropdown.css
+src/renderer/src/components/Levels/DifficultyDropdown/DifficultyDropdown.tsx
+
+src/renderer/src/context/Web/Difficulty/temp.tsx
+src/renderer/src/context/Web/Difficulty/typescript.ts
+src/renderer/src/pages/Levels/test.css

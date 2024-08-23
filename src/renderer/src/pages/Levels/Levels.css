@@ -1,34 +1,293 @@
-/* main page styles */
-#pageMain {
-  width: 100%;
-  height: 100%;
-  padding: 5% 0 0 0;
+/* Page Formatting */
+#content {
+  width: 100vw;
+  height: 100vh;
+  padding: 4.25rem 0 0 0;
 
-  position: relative;
   z-index: 9998;
 
-  overflow-y: scroll;
-  overflow-x: hidden;
-
-  align-items: center;
   justify-content: center;
   display: flex;
 }
 
-#pageHeader {
+/* Content (Search & Levels Display) */
+#browser {
+  margin: 0 8vw;
+  max-width: 84vw;
+  width: 100%;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-family: Quicksand-Bold, sans-serif;
 }
 
-#pageLogo {
-  font-family: Quicksand-Bold, "Arial Rounded MT Bold", sans-serif;
-  font-size: xx-large;
-  margin-bottom: 5px;
+/* Search Related Content (toolbar & submenus) */
+#search {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  color: white;
 }
 
-#logoPlanets-Page {
-  height: 32px;
-  width: 30px;
+/* Toolbar (Search Input, Reset and Submenu Toggles) */
+#toolbar {
+  width: 100%;
+  gap: 12px;
 
-  position: relative;
-  top: 4.3px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  color: white;
+}
+
+.toolbar-button-div, #toolbar-input, #toolbar-filter, #toolbar-sort, #toolbar-reset {
+  border-radius: 5px;
+  border: 2px solid rgba(255,255,255,0.35);
+}
+
+.toolbar-button-div:hover, #toolbar-input:hover, #toolbar-filter:hover, #toolbar-sort:hover, #toolbar-reset:hover {
+  background-color: rgba(255,255,255,0.35);
+}
+
+#toolbar-input:hover > #input-entry::placeholder {
+  color: white;
+}
+
+#toolbar-input {
+  width: 100%;
+  padding: 0 0 0 8px;
+  background-color: rgba(255,255,255,0.15);
+}
+
+.toolbar-button-div, #toolbar-filter, #toolbar-sort, #toolbar-reset {
+  background-color: rgba(255,255,255,0.15);
+}
+
+/* Toolbar Item Styles */
+.toolbar-button, #input-entry, #filter-toggle, #sort-toggle, #reset-button {
+  height: 36px;
+
+  font-family: Quicksand-Medium, sans-serif;
+  color: white;
+  text-overflow: ellipsis;
+}
+
+.toolbar-button, #filter-toggle, #sort-toggle, #reset-button {
+  width: 36px;
+  background: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Text Input Styles */
+#input-entry {
+  width: 100%;
+
+  font-size: 14pt;
+  background: none;
+}
+
+#input-entry::placeholder {
+  font-family: Quicksand-Medium, sans-serif;
+  color: rgba(255,255,255,0.77);
+}
+
+/* Toolbar Icons */
+.toolbar-button-icon, #filter-toggle-icon, #sort-toggle-icon, #reset-button-icon {
+  width: 24px;
+  height: 24px;
+}
+
+
+
+/* Filters and Sorting Section */
+#filter-menu, #sort-menu {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+
+  /*height: min-content;*/
+  transition: height 0.5s ease-out, opacity 1s ease-out;
+  overflow: hidden;
+  /*flex-direction: column;*/
+  /*width: 100%;*/
+  /*height: auto;*/
+
+  /*padding-top: 12px;*/
+  /*padding-bottom: 12px;*/
+  /*border-bottom: 2px solid rgba(255,255,255,0.35);*/
+  /*border-radius: 2px;*/
+
+  /*transition: all ease-in-out 0.5s;*/
+}
+
+
+
+/* Filters Section */
+#filter-menu {}
+
+#filter-container {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#filter-head {
+  width: 100%;
+}
+
+#filter-params {
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: row;
+
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+#filter-params-difficulty {
+  width: 100%;
+}
+
+
+
+
+/* Sorting Section */
+#sort-menu {}
+
+#sort-container {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#sort-head {
+  width: 100%;
+}
+
+#sort-params {
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: row;
+
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+
+
+
+/*stuff*/
+.param-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.param-group {
+  display: flex;
+  flex-direction: row;
+}
+
+.param-container {
+  border-radius: 5px;
+  border: 2px solid rgba(255,255,255,0.35);
+  background-color: rgba(255,255,255,0.15);
+
+  margin-top: 8px;
+  margin-right: 10px;
+}
+
+.param-container:hover {
+  background-color: rgba(255,255,255,0.35);
+}
+
+.param-item {
+  width: 36px;
+  height: 36px;
+
+  background: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: Quicksand-Medium, sans-serif;
+  color: white;
+}
+
+.param-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.param-thing {
+  display: flex;
+  flex-direction: row;
+
+  margin-top: 8px;
+  margin-right: 10px;
+}
+
+
+
+/* Level Cards Section */
+#results {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#results-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#results-levels {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Extra Styles */
+.section-divider {
+  align-self: center;
+  height: 2px;
+  background: rgba(255,255,255,0.35);
+  border-radius: 2px;
+  margin: 10px 0;
+  transition: width 1s ease-out, opacity 1s ease-out;
+}
+
+.divider-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
 }

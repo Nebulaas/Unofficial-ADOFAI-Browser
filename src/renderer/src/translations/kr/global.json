@@ -9,8 +9,8 @@
     "account": "고객",
     "browse": "레벨",
     "submit": "제출",
-    "community": "커뮤니티 센터",
-    "leaderboard": "리더보드",
+    "social": "사회적인",
+    "rankings": "순위",
     "about": "우리에 대해",
     "language": "언어",
     "settings": "조절",
@@ -34,7 +34,102 @@
     "user": "사용자님"
   },
 
-  "browse": {
+
+
+
+  "levels": {
+    "ratingSystem": {
+      "": "",
+
+      "tooltip": {
+        "button": "등급 시스템 변경"
+      }
+    },
+
+    "help": {
+      "tooltip": {
+        "button": "검색 기능 설명"
+      }
+    },
+
+    "display": {
+      "tooltip": {
+        "toggle": "디스플레이 옵션"
+      }
+    },
+
+    "search": {
+      "placeholder": "검색: #ID, 아티스트 이름, 제작자 이름, 노래 이름...",
+
+      "tooltip": {
+
+      }
+    },
+
+    "filter": {
+      "header": "필터",
+
+      "params": {
+        "difficulty": "난이도"
+      },
+
+      "tooltip": {
+        "toggle": "필터",
+
+        "params": {
+          "difficulty": "난이도"
+        }
+      }
+    },
+
+    "sort": {
+      "header": "분류하다",
+
+      "params": {
+        "recent": "최근의",
+        "difficulty": "난이도",
+        "random": "랜덤"
+      },
+
+      "tooltip": {
+        "toggle": "분류하다",
+
+        "params": {
+          "recentAsc": "최근 오름차순\n(구형 -> 신규)",
+          "recentDsc": "최근 내림차순\n(신규 -> 기존)",
+          "difficultyAsc": "난이도 상승\n(낮음 -> 높음)",
+          "difficultyDsc": "난이도 하강\n(높음 -> 낮음)",
+          "random": "랜덤"
+        }
+      }
+    },
+
+    "tags": {
+      "tooltip": {
+        "toggle": "태그"
+      }
+    },
+
+    "reset": {
+      "tooltip": {
+        "button": "모든 매개변수 재설정"
+      }
+    },
+
+    "results": {
+      "display": {
+        "loading": "결과를 얻고 있습니다!",
+        "end": "더 이상 결과가 없습니다!",
+        "error": "검색어가 잘못되었습니다!"
+      },
+
+      "cards": {
+        "difficulty": "난이도",
+        "creator": "작성자",
+        "clears": "완료"
+      }
+    },
+
     "pageTitle": "레벨"
   }
 }

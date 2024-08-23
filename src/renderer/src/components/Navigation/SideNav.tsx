@@ -12,7 +12,6 @@ import './SideNav.css'
 import LanguageDialogue from '../Language/LanguageDialogue'
 
 const SideNav = (): ReactElement => {
-
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const { t } = useTranslation()
@@ -115,7 +114,7 @@ const SideNav = (): ReactElement => {
                 size="lg"
               />
               <p id="sideCommunityText" className="navSideText">
-                {t('sideNav.community')}
+                {t('sideNav.social')}
               </p>
             </NavLink>
           </div>
@@ -136,7 +135,7 @@ const SideNav = (): ReactElement => {
                 size="xl"
               />
               <p id="sideLeaderboardText" className="navSideText">
-                {t('sideNav.leaderboard')}
+                {t('sideNav.rankings')}
               </p>
             </NavLink>
           </div>

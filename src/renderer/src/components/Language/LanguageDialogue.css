@@ -20,6 +20,7 @@
   border: 3px solid rgba(255,255,255,0.35);
   border-radius: 5px;
   box-shadow: -5px 5px 10px 0 rgba(0,0,0,0.3);
+  backdrop-filter: blur(5px);
 }
 
 .dialogue {

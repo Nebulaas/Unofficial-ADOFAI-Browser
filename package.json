@@ -23,11 +23,15 @@
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.0",
     "@electron-toolkit/utils": "^3.0.0",
+    "axios": "^1.7.2",
     "electron-updater": "^6.1.7",
     "i18next": "^23.11.4",
     "react-i18next": "^14.1.1",
+    "react-infinite-scroll-component": "^6.1.0",
     "react-router": "^6.23.0",
-    "react-router-dom": "^6.23.0"
+    "react-router-dom": "^6.23.0",
+    "react-select": "^5.8.0",
+    "react-tooltip": "^5.27.1"
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config-prettier": "^2.0.0",
