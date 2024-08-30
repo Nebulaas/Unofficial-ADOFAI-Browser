@@ -24,9 +24,13 @@ const SideNav = (): ReactElement => {
     languageDialogueRef.current.openDialogue()
   }
 
+  // prevents link from being navigated to by preventing the default onClick event behaviour
+  const handleDisabledLink = (e): void => {
+    e.preventDefault()
+  }
+
   return (
     <>
-
       <LanguageDialogue ref={languageDialogueRef}></LanguageDialogue>
 
       {/* Left Side of Window */}
@@ -38,6 +42,7 @@ const SideNav = (): ReactElement => {
           {/* account icon */}
           <div id="navSideAccount" className="navSideItem">
             <NavLink
+              onClick={handleDisabledLink} // disable navigation to this page
               id="sideAccountLink"
               className={({ isActive }) =>
                 isActive ? 'navSideLink sideActivePage' : 'navSideLink sideInactivePage'
@@ -80,6 +85,7 @@ const SideNav = (): ReactElement => {
           {/* submissions icon */}
           <div id="navSideSubmit" className="navSideItem">
             <NavLink
+              onClick={handleDisabledLink} // disable navigation to this page
               id="sideSubmitLink"
               className={({ isActive }) =>
                 isActive ? 'navSideLink sideActivePage' : 'navSideLink sideInactivePage'
@@ -101,6 +107,7 @@ const SideNav = (): ReactElement => {
           {/* community icon */}
           <div id="navSideCommunity" className="navSideItem">
             <NavLink
+              onClick={handleDisabledLink} // disable navigation to this page
               id="sideCommunityLink"
               className={({ isActive }) =>
                 isActive ? 'navSideLink sideActivePage' : 'navSideLink sideInactivePage'
@@ -119,9 +126,10 @@ const SideNav = (): ReactElement => {
             </NavLink>
           </div>
 
-          {/* community icon */}
+          {/* leaderboard icon */}
           <div id="navSideLeaderboard" className="navSideItem">
             <NavLink
+              onClick={handleDisabledLink} // disable navigation to this page
               id="sideLeaderboardLink"
               className={({ isActive }) =>
                 isActive ? 'navSideLink sideActivePage' : 'navSideLink sideInactivePage'
@@ -143,6 +151,7 @@ const SideNav = (): ReactElement => {
           {/* about icon */}
           <div id="navSideAbout" className="navSideItem">
             <NavLink
+              onClick={handleDisabledLink} // disable navigation to this page
               id="sideAboutLink"
               className={({ isActive }) =>
                 isActive ? 'navSideLink sideActivePage' : 'navSideLink sideInactivePage'
@@ -182,6 +191,7 @@ const SideNav = (): ReactElement => {
           {/* settings icon */}
           <div id="navSideSettings" className="navSideItem">
             <NavLink
+              onClick={handleDisabledLink} // disable navigation to this page
               id="sideSettingsLink"
               className={({ isActive }) =>
                 isActive ? 'navSideLink sideActivePage' : 'navSideLink sideInactivePage'

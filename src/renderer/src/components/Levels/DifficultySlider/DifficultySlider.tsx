@@ -18,14 +18,12 @@ interface DifficultySliderProps {
   system: string // active rating system
 }
 
-/*
-
-*/
+// typed as FC (functional component) for easy property types, `onChange` is a callable function
 const DifficultySlider: FC<DifficultySliderProps> = ({ min, max, onChange, system }) => {
   // state holding the current value of the left slider thumb, default passed in Levels.tsx
   const [minVal, setMinVal] = useState(min)
   // state holding the current value of the right slider thumb, default passed in Levels.tsx
-  const [maxVal, setMaxVal] = useState(max)
+  const [maxVal, setMaxVal] = useState(54) // 54 = U14, cant go higher
   // react ref for minVal state
   const minValRef = useRef<HTMLInputElement>(null)
   // react ref for maxVal state
@@ -40,16 +38,13 @@ const DifficultySlider: FC<DifficultySliderProps> = ({ min, max, onChange, syste
     // sortOpen, setSortOpen,
     query, setQuery,
 
-    // diffs,
-    // filterMinDiff, setFilterMinDiff,
-    // filterMaxDiff, setFilterMaxDiff,
     minDiff, setMinDiff,
     maxDiff, setMaxDiff,
 
     sort, setSort
     // hasMore, setHasMore,
     // pageNumber, setPageNumber,
-  } = useContext(LevelContext)
+  }: any = useContext(LevelContext)
 
   let {
     difficulties,
@@ -63,7 +58,7 @@ const DifficultySlider: FC<DifficultySliderProps> = ({ min, max, onChange, syste
     fromDifficulty,
     fromDifficultyOrUndefined,
     difficultiesFor
-  } = useContext(DifficultyContext)
+  }: any = useContext(DifficultyContext)
 
   const [ratingSystem, setRatingSystem] = useState(system) // use later
 
@@ -117,6 +112,17 @@ const DifficultySlider: FC<DifficultySliderProps> = ({ min, max, onChange, syste
     onChange({ min: minVal, max: maxVal })
   }, [minVal, maxVal, onChange])
 
+  // converts a difficulty index value to a specified system difficulty value
+  function convertDiffIndexToSystems(index, toSystem): string {
+    let convertedIndex: string
+    for (difficulty of filterDifficulty('INDEX', index)) {
+      // console.log(`INDEX.${index} => ${difficulty}`)
+      convertedIndex = fromDifficulty(toSystem, difficulty)
+      // console.log(`${difficulty} => ${convertedIndex}`)
+    }
+    return convertedIndex!
+  }
+
   return (
     <div className="slider-container">
       <input
@@ -130,23 +136,8 @@ const DifficultySlider: FC<DifficultySliderProps> = ({ min, max, onChange, syste
           setMinVal(value)
           event.target.value = value.toString()
 
-          selected_system = 'INDEX'
-          for (difficulty of filterDifficulty(selected_system, value)) {
-            console.log(`${selected_system}.${value} => ${difficulty}`)
-
-            let convertedDiff = fromDifficulty('TUFBE', difficulty)
-            console.log(`${difficulty} => ${convertedDiff}`)
-
-            let convertedIconDiff = fromDifficulty('TUF', difficulty)
-            console.log(`${difficulty} => ${convertedIconDiff}`)
-
-
-            setMinDiff(convertedDiff)
-            console.log('new min diff filter: minDiff = ' + convertedDiff)
-
-            changeMinDiffIcon(convertedIconDiff)
-            console.log('change min diff icon to: ' + value + ' = ' + convertedIconDiff)
-          }
+          setMinDiff(convertDiffIndexToSystems(value, 'TUFBE'))
+          changeMinDiffIcon(convertDiffIndexToSystems(value, ratingSystem))
         }}
         className={classnames('thumb thumb-zindex-3', {
           'thumb-zindex-5': minVal > max - 100
@@ -160,28 +151,14 @@ const DifficultySlider: FC<DifficultySliderProps> = ({ min, max, onChange, syste
         value={maxVal}
         ref={maxValRef}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
-          const value = Math.max(+event.target.value, minVal)
+          let value = Math.max(+event.target.value, minVal)
+          // as there are no levels higher than difficulty 54 (U14), don't let the user filter higher than 54.
+          value = (value < 55) ? value : 54
           setMaxVal(value)
           event.target.value = value.toString()
 
-          selected_system = 'INDEX'
-          for (difficulty of filterDifficulty(selected_system, value)) {
-            console.log(`${selected_system}.${value} => ${difficulty}`)
-
-            let convertedDiff = fromDifficulty('TUFBE', difficulty)
-            let convertedValue = converted ? converted : '<unsupported>'
-            console.log(`${difficulty} => ${convertedDiff}`)
-
-            let convertedIconDiff = fromDifficulty('TUF', difficulty)
-            console.log(`${difficulty} => ${convertedIconDiff}`)
-
-
-            setMaxDiff(convertedDiff)
-            console.log('new max diff filter: maxDiff = ' + convertedDiff)
-
-            changeMaxDiffIcon(convertedIconDiff)
-            console.log('change max diff icon to: ' + value + ' = ' + convertedIconDiff)
-          }
+          setMaxDiff(convertDiffIndexToSystems(value, 'TUFBE'))
+          changeMaxDiffIcon(convertDiffIndexToSystems(value, ratingSystem))
         }}
         className="thumb thumb-zindex-4"
       />
@@ -192,22 +169,22 @@ const DifficultySlider: FC<DifficultySliderProps> = ({ min, max, onChange, syste
         <div className="slider-left-value">
           <DifficultyIcon
             ref={changeMinDiffIconRef}
-            difficulty={'P1'}
+            difficulty={convertDiffIndexToSystems(minVal, ratingSystem)}
             size={'24px'}
             censored={false}
             rated={true}
             impossible={false}
-          /> {/*difficulty={minVal}*/}
+          />
         </div>
         <div className="slider-right-value">
           <DifficultyIcon
             ref={changeMaxDiffIconRef}
-            difficulty={'U20'}
+            difficulty={convertDiffIndexToSystems(maxVal, ratingSystem)}
             size={'24px'}
             censored={false}
             rated={true}
             impossible={false}
-          /> {/*difficulty={maxVal}*/}
+          />
         </div>
       </div>
     </div>

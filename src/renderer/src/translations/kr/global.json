@@ -52,12 +52,6 @@
       }
     },
 
-    "display": {
-      "tooltip": {
-        "toggle": "디스플레이 옵션"
-      }
-    },
-
     "search": {
       "placeholder": "검색: #ID, 아티스트 이름, 제작자 이름, 노래 이름...",
 
@@ -88,6 +82,7 @@
       "params": {
         "recent": "최근의",
         "difficulty": "난이도",
+        "clears": "완료 횟수",
         "random": "랜덤"
       },
 
@@ -97,16 +92,28 @@
         "params": {
           "recentAsc": "최근 오름차순\n(구형 -> 신규)",
           "recentDsc": "최근 내림차순\n(신규 -> 기존)",
-          "difficultyAsc": "난이도 상승\n(낮음 -> 높음)",
-          "difficultyDsc": "난이도 하강\n(높음 -> 낮음)",
+          "difficultyAsc": "올라가는데 어려움을 겪고\n(낮음 -> 높음)",
+          "difficultyDsc": "하강의 어려움\n(낮음 -> 높음)",
+          "clearsAsc": "완료 횟수 오름차순\n(낮음 -> 높음)",
+          "clearsDsc": "완료 횟수 내림차순\n(높음 -> 낮음)",
           "random": "랜덤"
         }
       }
     },
 
     "tags": {
+      "header": "태그",
+
       "tooltip": {
         "toggle": "태그"
+      }
+    },
+
+    "display": {
+      "header": "디스플레이",
+
+      "tooltip": {
+        "toggle": "디스플레이 옵션"
       }
     },
 
@@ -126,7 +133,14 @@
       "cards": {
         "difficulty": "난이도",
         "creator": "작성자",
-        "clears": "완료"
+        "clears": "완료 횟수",
+
+        "tooltip": {
+          "json": "JSON 데이터 다운로드",
+          "workshop": "Steam 창작마당",
+          "direct": "직접 다운로드",
+          "none": "레벨 다운로드 없음"
+        }
       }
     },
 

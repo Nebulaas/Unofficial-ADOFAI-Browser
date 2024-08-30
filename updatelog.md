@@ -223,3 +223,31 @@ Browse Page, Search, Level Results & more!
 
 ---
 
+### 30/8/24 [v0.0.0.9 prototype]
+Updates to the Level Browser
+
+- Added:
+
+  <div style="background-color: rgba(3,215,0,0.33)">
+
+  - New rules for prettier, eslint, and tsconfig files.
+  - Fixed a bunch of "errors" in code
+  - More code comments :D
+
+  </div>
+
+
+- Changed:
+
+  <div style="background-color: rgba(0,125,215,0.33)">
+
+  - Fixed missing .env file for data fetch URL
+  - Added line to update git module to README.md
+  - Styling of level cards to be more congruent with rest of app
+  - Max difficulty filter now won't go above U14 to prevent bugs
+
+  </div>
+
+---
+
+

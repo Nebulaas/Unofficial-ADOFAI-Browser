@@ -49,6 +49,10 @@ const TopNav = (): ReactElement => {
     loginDialogueRef.current.openDialogue()
   }
 
+  const handleDisabledLink = (e): void => {
+    e.preventDefault()
+  }
+
   return (
     <>
       {/* updateWelcomeText={updateWelcomeText} */}
@@ -111,6 +115,7 @@ const TopNav = (): ReactElement => {
           {/* Submissions page */}
           <div id="navTopSubmit" className="navTopItem">
             <NavLink
+              onClick={handleDisabledLink} // disable navigation to this page
               id="topSubmitLink"
               className={({ isActive }) =>
                 isActive ? 'navTopLink topActivePage' : 'navTopLink topInactivePage'
@@ -132,6 +137,7 @@ const TopNav = (): ReactElement => {
           {/* About page */}
           <div id="navTopAbout" className="navTopItem">
             <NavLink
+              onClick={handleDisabledLink} // disable navigation to this page
               id="topAboutLink"
               className={({ isActive }) =>
                 isActive ? 'navTopLink topActivePage' : 'navTopLink topInactivePage'

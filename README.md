@@ -53,7 +53,7 @@ Project setup:
   mkdir ADOFAI_Browser_App
   cd ADOFAI_Browser_App
   pnpm i electron-vite -D
-    pnpm create @quick-start/electron adofai-browser --template react-ts
+  pnpm create @quick-start/electron adofai-browser --template react-ts
   cd adofai-browser
 ```
 
@@ -77,6 +77,8 @@ Install dependencies, libraries, etc.:
   pnpm i react-tooltip
   pnpm i react-select
   pnpm i react-infinite-scroll-component
+
+  git submodule update --init
 ```
 Run the app:
 ```bash

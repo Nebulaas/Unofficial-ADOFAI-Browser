@@ -5,17 +5,22 @@
   gap: 1rem;
   min-height: 4rem;
   padding: 0.5rem;
-  border-radius: 0;
-  margin-bottom: 1rem;
+  /*border-radius: 0;*/
+  margin-bottom: 10px;
   cursor: pointer;
   align-items: center;
   flex-wrap: wrap;
-  border-bottom: 1px solid;
-  border-color: #cccccc;
+  border-radius: 5px;
+  border: 2px solid rgba(255,255,255,0.35);
+  background-color: rgba(255,255,255,0.15);
+  /*border: 1px solid;*/
+  /*border-color: #cccccc;*/
   transition: all 0.1s ease-in-out;
 }
 #level-card-container:hover {
-  background-color: #ffffff80;
+  /*background-color: #ffffff80;*/
+  background-color: rgba(255, 255, 255, 0.5);
+
 }
 .section-top-text {
   /*width: -moz-fit-content;*/
@@ -48,6 +53,23 @@
   align-items: center;
   justify-content: center;
 }
+#card-credits {
+  position: relative;
+  display: flex;
+  justify-content: left;
+  gap: 1rem;
+  /*min-height: 4rem;*/
+  /*padding: 0.5rem;*/
+  /*border-radius: 0;*/
+  /*margin-bottom: 10px;*/
+  /*cursor: pointer;*/
+  align-items: center;
+  flex-wrap: wrap;
+  /*transition: all 0.1s ease-in-out;*/
+
+  overflow: hidden;
+  width: 516px; /* rounded, should be 515.7px */
+}
 #card-music-section {
   flex: 1;
   overflow: hidden;
@@ -57,7 +79,6 @@
   flex: 1;
   overflow: hidden;
   min-width: 20px;
-  /*padding-right: 50px;*/
 }
 #card-creator-section .group {
   width: 100%;

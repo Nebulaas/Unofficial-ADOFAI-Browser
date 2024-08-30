@@ -8,6 +8,7 @@ const DifficultyContext = createContext()
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const DifficultyContextProvider = (props) => {
 
+  // type interface of different difficulty rating systems as well as some utility systems
   interface systems {
     ADOFAIB: ADOFAIB
     INDEX: INDEX
@@ -17,38 +18,31 @@ const DifficultyContextProvider = (props) => {
     TUFBE: TUFBE
   }
 
-  // type diffTypeEasy           = 0  | 1  | 2  | 3  | 4  | 5  | 6  | 7  | 8  | 9  | 10
-  // type diffTypeMed            = 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20
-  // type diffTypeHard           = 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30
-  // type diffTypeDifficult      = 31 | 32 | 33 | 34 | 35 | 36 | 37 | 38 | 39 | 40
-  // type diffTypeChallenging    = 41 | 42 | 43 | 44 | 45 | 46 | 47 | 48 | 49 | 50
-  // type diffTypeInhuman        = 51 | 52 | 53 | 54 | 55 | 56 | 57 | 58 | 59 | 60
+  // the 6 different 10 difficulty groups,
+  // do note diffTypeBeginner has 11 difficulties due to TUF PGU combining L0 & L1 while other systems do not.
+  type diffTypeEasy        = 'L0'  | 'L1'  | 'L2'  | 'L3'  | 'L4'  | 'L5'  | 'L6'  | 'L7'  | 'L8'  | 'L9'  | 'L10'
+  type diffTypeMed         = 'L11' | 'L12' | 'L13' | 'L14' | 'L15' | 'L16' | 'L17' | 'L18' | 'L19' | 'L20'
+  type diffTypeHard        = 'L21' | 'L22' | 'L23' | 'L24' | 'L25' | 'L26' | 'L27' | 'L28' | 'L29' | 'L30'
+  type diffTypeDifficult   = 'L31' | 'L32' | 'L33' | 'L34' | 'L35' | 'L36' | 'L37' | 'L38' | 'L39' | 'L40'
+  type diffTypeChallenging = 'L41' | 'L42' | 'L43' | 'L44' | 'L45' | 'L46' | 'L47' | 'L48' | 'L49' | 'L50'
+  type diffTypeInhuman     = 'L51' | 'L52' | 'L53' | 'L54' | 'L55' | 'L56' | 'L57' | 'L58' | 'L59' | 'L60'
+  // difficulties for moderation purposes
+  type diffMisc            = 'unranked' | 'censored' | 'impossible'
 
-  type diffTypeEasy        = "L0"  | "L1"  | "L2"  | "L3"  | "L4"  | "L5"  | "L6"  | "L7"  | "L8"  | "L9"  | "L10"
-  type diffTypeMed         = "L11" | "L12" | "L13" | "L14" | "L15" | "L16" | "L17" | "L18" | "L19" | "L20"
-  type diffTypeHard        = "L21" | "L22" | "L23" | "L24" | "L25" | "L26" | "L27" | "L28" | "L29" | "L30"
-  type diffTypeDifficult   = "L31" | "L32" | "L33" | "L34" | "L35" | "L36" | "L37" | "L38" | "L39" | "L40"
-  type diffTypeChallenging = "L41" | "L42" | "L43" | "L44" | "L45" | "L46" | "L47" | "L48" | "L49" | "L50"
-  type diffTypeInhuman     = "L51" | "L52" | "L53" | "L54" | "L55" | "L56" | "L57" | "L58" | "L59" | "L60"
-  type diffMisc            = "unranked" | "censored" | "impossible"
-
+  // union type of all ~10 level difficulty group types as well as the miscellaneous group types,
+  // used as a key for the record as well as the record's ADOFAIB values
   type ADOFAIB =
-    diffTypeEasy | diffTypeMed |
-    diffTypeHard | diffTypeDifficult |
-    diffTypeChallenging | diffTypeInhuman |
+    diffTypeEasy |
+    diffTypeMed |
+    diffTypeHard |
+    diffTypeDifficult |
+    diffTypeChallenging |
+    diffTypeInhuman |
     diffMisc
 
-  // type ADOFAIB =
-  //   "L0"  | "L1"  | "L2"  | "L3"  | "L4"  | "L5"  | "L6"  | "L7"  | "L8"  | "L9"  | "L10" |
-  //   "L11" | "L12" | "L13" | "L14" | "L15" | "L16" | "L17" | "L18" | "L19" | "L20" |
-  //   "L21" | "L22" | "L23" | "L24" | "L25" | "L26" | "L27" | "L28" | "L29" | "L30" |
-  //   "L31" | "L32" | "L33" | "L34" | "L35" | "L36" | "L37" | "L38" | "L39" | "L40" |
-  //   "L41" | "L42" | "L43" | "L44" | "L45" | "L46" | "L47" | "L48" | "L49" | "L50" |
-  //   "L51" | "L52" | "L53" | "L54" | "L55" | "L56" | "L57" | "L58" | "L59" | "L60" |
-  //   "unranked" | "censored" | "impossible" |
-  //   ''
 
-
+  // type containing the index of each difficulty as string literals.
+  // exists for conversion of DifficultySlider indices (INDEX) to valid TUF Backend difficulty values (TUFBE)
   type INDEX =
     0  | 1  | 2  | 3  | 4  | 5  | 6  | 7  | 8  | 9  | 10 |
     11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 |
@@ -59,6 +53,8 @@ const DifficultyContextProvider = (props) => {
     'unranked' | 'censored' | 'impossible' |
     ''
 
+  // type containing all legacy TUF difficulties as string literals.
+  // currently unused, but exists for future development
   type T21C =
     '1' | '2' | '3' | '4' | '5' |
     '6' | '7' | '8' | '9' | '10' |
@@ -72,7 +68,7 @@ const DifficultyContextProvider = (props) => {
     '0' | '-2' | '-21' |
     ''
 
-
+  // type containing all TUF difficulties as string literals
   type TUF =
     'P1'  | 'P2'  | 'P3'  | 'P4'  | 'P5'  | 'P6'  | 'P7'  | 'P8'  | 'P9'  | 'P10' |
     'P11' | 'P12' | 'P13' | 'P14' | 'P15' | 'P16' | 'P17' | 'P18' | 'P19' | 'P20' |
@@ -80,48 +76,50 @@ const DifficultyContextProvider = (props) => {
     'G11' | 'G12' | 'G13' | 'G14' | 'G15' | 'G16' | 'G17' | 'G18' | 'G19' | 'G20' |
     'U1'  | 'U2'  | 'U3'  | 'U4'  | 'U5'  | 'U6'  | 'U7'  | 'U8'  | 'U9'  | 'U10' |
     'U11' | 'U12' | 'U13' | 'U14' | 'U15' | 'U16' | 'U17' | 'U18' | 'U19' | 'U20' |
-    // 'X1'  | 'X2'  | 'X3' |
     '0'  | '-2'  | '-21' |
     ''
 
-
+  // type containing all TUF backend difficulties as string literals.
+  // exists for conversion of DifficultySlider indices (INDEX) to valid TUF Backend difficulty values (TUFBE)
   type TUFBE =
     '1' | '2' | '3' | '4' | '5' |
     '6' | '7' | '8' | '9' | '10' |
     '11' | '12' | '13' | '14' | '15' |
     '16' | '17' | '18' | '18.5' | '19' | '19.5' | '20.0' | '20.05' |
-
     '20.1' | '20.15' | '20.2' | '20.25' | '20.3' | '20.35' |
     '20.4' | '20.45' | '20.5' | '20.55' | '20.6' | '20.65' |
     '20.7' | '20.75' | '20.8' | '20.85' | '20.9' | '20.95' |
-
     '21.0' | '21.04' | '21.05' | '21.09' |
     '21.1' | '21.14' | '21.15' | '21.19' |
     '21.2' | '21.24' | '21.25' | '21.29' |
     '21.3' | '21.34' | '21.35' | '21.39' |
-
     '0'    | '-2'   | '-21' |
     ''
 
-
+  // type containing all ADOFAI.GG difficulties as string literals.
+  // currently unused, but exists for future development
   type GG =
-    // '1'  | '2'  | '3'  | '4'  | '5'  | '6'  | '7'  | '8'  | '9'  | '10' |
-    // '11' | '12' | '13' | '14' | '15' | '16' | '17' | '18' | '19' | '20' |
-    // '21' | '22' | '23' | '24' | '25' | '26' | '27' | '28' | '29' | '30' |
-    // '31' | '32' | '33' | '34' | '35' | '36' | '37' | '38' | '39' | '40' |
-    // '41' | '42' | '43' | '44' | '45' | '46' | '47' | '48' | '49' | '50' |
-    // '51' | '52' | '53' | '54' | '55' | '56' | '57' | '58' | '59' | '60' |
-    // ''
     '1'  | '2'  | '3'  | '4'  | '5'  | '6'  | '7'  | '8'  | '9'  | '10' |
     '11' | '12' | '13' | '14' | '15' | '16' | '17' | '18' | '18+' | '19' | '19+' | '20.0' |
     '20.1' | '20.2' | '20.3' | '20.4' | '20.5' | '20.6' | '20.7' | '20.8' | '20.9' |
     '21' | '22' |
     '' | '-1'
 
+  /*
+  A comprehensive list of every difficulty increment, with 61 mainline difficulties as well as
+  a (to be in future) expanded list of miscellaneous ones for moderation purposes or to indicate gimmicks (unique features).
 
+  Each difficulty value type, e.g. L0, is assigned a dictionary of equivalent string values for
+  each 3rd party difficulty rating system 'key type' (see the systems interface), e.g. TUF: 'P1' for The Universal Forums' PGU system
+
+  The purpose of this is to allow for conversion between equivalent difficulties as an accessibility feature
+  for those already familiar and more comfortable with a specific system, as well as to allow for the querying of databases.
+  */
+  // Note: L1 TUFBE should be '2' but this breaks the difficulty slider for some reason?
   const difficulties: Record<ADOFAIB, systems> = {
+    // the 61 mainline difficulties from L0 to L60
     L0:  { ADOFAIB: 'L0',  INDEX: 0,   TUF: 'P1',  T21C: '1',     GG: '1',    TUFBE: '1' },
-    L1:  { ADOFAIB: 'L1',  INDEX: 1,   TUF: 'P1',  T21C: '2',     GG: '2',    TUFBE: '2' },
+    L1:  { ADOFAIB: 'L1',  INDEX: 1,   TUF: 'P1',  T21C: '2',     GG: '2',    TUFBE: '1' },
     L2:  { ADOFAIB: 'L2',  INDEX: 2,   TUF: 'P2',  T21C: '3',     GG: '3',    TUFBE: '3' },
     L3:  { ADOFAIB: 'L3',  INDEX: 3,   TUF: 'P3',  T21C: '4',     GG: '4',    TUFBE: '4' },
     L4:  { ADOFAIB: 'L4',  INDEX: 4,   TUF: 'P4',  T21C: '5',     GG: '5',    TUFBE: '5' },
@@ -142,7 +140,7 @@ const DifficultyContextProvider = (props) => {
     L19: { ADOFAIB: 'L19', INDEX: 19,  TUF: 'P19', T21C: '19',    GG: '19',   TUFBE: '19' },
     L20: { ADOFAIB: 'L20', INDEX: 20,  TUF: 'P20', T21C: '19+',   GG: '19+',  TUFBE: '19.5' },
     L21: { ADOFAIB: 'L21', INDEX: 21,  TUF: 'G1',  T21C: '20.0',  GG: '20.0', TUFBE: '20.0' },
-    L22: { ADOFAIB: 'L22', INDEX: 22,  TUF: 'G2',  T21C: '20.0+', GG: '20.0', TUFBE: '20.5' },
+    L22: { ADOFAIB: 'L22', INDEX: 22,  TUF: 'G2',  T21C: '20.0+', GG: '20.0', TUFBE: '20.05' },
     L23: { ADOFAIB: 'L23', INDEX: 23,  TUF: 'G3',  T21C: '20.1',  GG: '20.1', TUFBE: '20.1' },
     L24: { ADOFAIB: 'L24', INDEX: 24,  TUF: 'G4',  T21C: '20.1+', GG: '20.1', TUFBE: '20.15' },
     L25: { ADOFAIB: 'L25', INDEX: 25,  TUF: 'G5',  T21C: '20.2',  GG: '20.2', TUFBE: '20.2' },

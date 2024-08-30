@@ -53,12 +53,6 @@
       }
     },
 
-    "display": {
-      "tooltip": {
-        "toggle": "Display Options"
-      }
-    },
-
     "search": {
       "placeholder": "Search for: #ID, Artist Name, Creator(s) Name, Song Name...",
 
@@ -89,6 +83,7 @@
       "params": {
         "recent": "Recent",
         "difficulty": "Difficulty",
+        "clears": "Clears",
         "random": "Random"
       },
 
@@ -100,14 +95,26 @@
           "recentDsc": "Recent Descending\n(New -> Old)",
           "difficultyAsc": "Difficulty Ascending\n(Low -> High)",
           "difficultyDsc": "Difficulty Descending\n(High -> Low)",
+          "clearsAsc": "Clears Ascending\n(Low -> High)",
+          "clearsDsc": "Clears Descending\n(High -> Low)",
           "random": "Random"
         }
       }
     },
 
     "tags": {
+      "header": "Tags",
+
       "tooltip": {
         "toggle": "Tags"
+      }
+    },
+
+    "display": {
+      "header": "Display",
+
+      "tooltip": {
+        "toggle": "Display Options"
       }
     },
 
@@ -127,7 +134,14 @@
       "cards": {
         "difficulty": "Difficulty",
         "creator": "Creator(s)",
-        "clears": "Clears"
+        "clears": "Clears",
+
+        "tooltip": {
+          "json": "JSON Data Download",
+          "workshop": "Steam Workshop Link",
+          "direct": "Direct Download",
+          "none": "No Level Download"
+        }
       }
     },
 

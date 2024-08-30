@@ -15,34 +15,27 @@ const LevelContextProvider = (props) => {
   const [filterOpen, setFilterOpen] = useState(false)
   // sort settings menu state, default is false = closed
   const [sortOpen, setSortOpen] = useState(false)
+
+  // tag settings menu state, default is false = closed
+  const [tagsOpen, setTagsOpen] = useState(false)
+  // display settings menu state, default is false = closed
+  const [displayOpen, setDisplayOpen] = useState(false)
+  // change system dialogue state, default is false = closed
+  const [changeSystemOpen, setChangeSystemOpen] = useState(false)
+  // browse help dialogue state, default is false = closed
+  const [helpOpen, setHelpOpen] = useState(false)
+
   // query string state
   const [query, setQuery] = useState('')
 
-  // bandaid fix for difficulty functionality, said functionality will be replaced by DifficultyContext.tsx
-  // const diffs = [
-  //   '0',
-  //   'P1', 'P2', 'P3', 'P4', 'P5',
-  //   'P6', 'P7', 'P8', 'P9', 'P10',
-  //   'P11', 'P12', 'P13', 'P14', 'P15',
-  //   'P16', 'P17', 'P18', 'P19', 'P20',
-  //   'G1', 'G2', 'G3', 'G4', 'G5',
-  //   'G6', 'G7', 'G8', 'G9', 'G10',
-  //   'G11', 'G12', 'G13', 'G14', 'G15',
-  //   'G16', 'G17', 'G18', 'G19', 'G20',
-  //   'U1', 'U2', 'U3', 'U4', 'U5',
-  //   'U6', 'U7', 'U8', 'U9', 'U10',
-  //   'U11', 'U12', 'U13', 'U14', 'U15',
-  //   'U16', 'U17', 'U18', 'U19', 'U20',
-  // ]
-
-  // const [filterMinDiff, setFilterMinDiff] = useState(diffs[0])
-  // const [filterMaxDiff, setFilterMaxDiff] = useState(diffs[59])
-  // min and max value states for difficulty slider filter and search query, subject to change
-  // const [minDiff, setMinDiff] = useState(diffs[1])
-  // const [maxDiff, setMaxDiff] = useState(diffs[60])
+  // min and max value states for difficulty slider filter and search query
   const [minDiff, setMinDiff] = useState('1')
   const [maxDiff, setMaxDiff] = useState('21.34')
 
+  // current tags array state for search query, unused for now
+  const [tags, setTags] = useState([])
+  // current display state for level display
+  const [display, setDisplay] = useState([])
 
   // current sort state for search query
   const [sort, setSort] = useState('RECENT_DESC')
@@ -53,6 +46,7 @@ const LevelContextProvider = (props) => {
   // i.e. each time new data is displayed, pageNumber increases. (could be wrong, don't take as fact)
   const [pageNumber, setPageNumber] = useState(0)
 
+  // return the context provider and values
   return (
     <LevelContext.Provider
       value={{
@@ -60,13 +54,19 @@ const LevelContextProvider = (props) => {
         legacyDiff, setLegacyDiff,
         filterOpen, setFilterOpen,
         sortOpen, setSortOpen,
+
+        tagsOpen, setTagsOpen,
+        displayOpen, setDisplayOpen,
+        changeSystemOpen, setChangeSystemOpen,
+        helpOpen, setHelpOpen,
+
         query, setQuery,
 
-        // diffs,
-        // filterMinDiff, setFilterMinDiff,
-        // filterMaxDiff, setFilterMaxDiff,
         minDiff, setMinDiff,
         maxDiff, setMaxDiff,
+
+        tags, setTags,
+        display, setDisplay,
 
         sort, setSort,
         hasMore, setHasMore,
