@@ -71,7 +71,7 @@ const DifficultyIcon: FC<DifficultyIconProps> = forwardRef<any,DifficultyIconPro
               : impossibleState // if the level is rated impossible
                 ? 'miscDiff/21-' 
                 : (difficultyState == 'MA') // if the level is a long level (marathon)
-                  ? 'miscDiff/Desertbus' // TODO: CHANGE TO MARATHON IMAGE WHEN ASSETS REPO IS UPDATED
+                  ? 'miscDiff/ma'
                   : 'pguDiff/' + difficultyState // otherwise, the level is a standard difficulty
         }.png` // path (should be) to a .png file
       ] as { default: string } | undefined

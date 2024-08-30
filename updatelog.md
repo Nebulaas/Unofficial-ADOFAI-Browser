@@ -250,4 +250,28 @@ Updates to the Level Browser
 
 ---
 
+### 31/8/24 [v0.0.0.10 prototype]
+Minor Fixes
+
+- Added:
+
+  <div style="background-color: rgba(3,215,0,0.33)">
+
+  - Fontawesome dependencies in package.json
+
+  </div>
+
+
+- Changed:
+
+  <div style="background-color: rgba(0,125,215,0.33)">
+
+  - TUF Marathon difficulty now uses correct image
+  - Updated git module to latest commit
+
+  </div>
+
+
+---
+
 
