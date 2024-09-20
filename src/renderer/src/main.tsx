@@ -23,6 +23,7 @@ import { LanguageContextProvider } from './context/Client/Language/Language'
 import { AccountContextProvider } from './context/Client/Account/Account'
 import { LevelContextProvider } from './context/Web/Levels/LevelContext'
 import { DifficultyContextProvider } from './context/Web/Difficulty/DifficultyContext'
+import { DiffSliderContextProvider } from './context/Web/Difficulty/DiffSliderContext'
 
 // imports for Fontawesome SVG library
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -58,9 +59,11 @@ root.render(
         <LevelContextProvider>
           <LanguageContextProvider>
             <AccountContextProvider>
-              <React.StrictMode>
-                <App />
-              </React.StrictMode>
+              <DiffSliderContextProvider>
+                <React.StrictMode>
+                  <App />
+                </React.StrictMode>
+              </DiffSliderContextProvider>
             </AccountContextProvider>
           </LanguageContextProvider>
         </LevelContextProvider>

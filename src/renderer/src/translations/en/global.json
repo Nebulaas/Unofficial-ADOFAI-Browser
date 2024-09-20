@@ -137,9 +137,9 @@
         "clears": "Clears",
 
         "tooltip": {
-          "json": "JSON Data Download",
+          "export": "Export Level Data",
           "workshop": "Steam Workshop Link",
-          "direct": "Direct Download",
+          "download": "Level Download Link",
           "none": "No Level Download"
         }
       }

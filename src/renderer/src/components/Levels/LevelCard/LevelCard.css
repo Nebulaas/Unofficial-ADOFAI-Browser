@@ -98,19 +98,22 @@
   align-items: center;
   cursor: pointer;
   justify-content: flex-end;
+  margin-right: 2px;
 }
 /*#data-dl-icon, #data-dl-link {*/
 /*  height: 20px;*/
 /*  width: 20px;*/
 /*}*/
 #card-download-section a {
-  display: block;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   height: 2.5rem;
   width: 2.5rem;
 }
 #card-download-section a svg {
-  height: 100%;
-  width: 100%;
+  /*padding: 0 0px;*/
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s;

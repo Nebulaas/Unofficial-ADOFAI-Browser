@@ -16,9 +16,11 @@ import { Tooltip } from 'react-tooltip'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 import axios from 'axios'
+import { useLocation } from 'react-router-dom'
+
 import { LevelContext } from '../../context/Web/Levels/LevelContext'
 import { DifficultyContext } from '../../context/Web/Difficulty/DifficultyContext'
-import { useLocation } from 'react-router-dom'
+import { DiffSliderContext } from '../../context/Web/Difficulty/DiffSliderContext'
 
 import LevelCard from '../../components/Levels/LevelCard/LevelCard'
 
@@ -65,30 +67,27 @@ const Levels = (): ReactElement => {
     pageNumber, setPageNumber,
   }: any = useContext(LevelContext)
 
+  // let {
+  //   difficulties,
+  //
+  //   selected_system,
+  //   selected_difficulty,
+  //   difficulty,
+  //   converted,
+  //
+  //   filterDifficulty,
+  //   fromDifficulty,
+  //   fromDifficultyOrUndefined,
+  //   difficultiesFor
+  // }: any = useContext(DifficultyContext)
+
   let {
-    difficulties,
+    setMinVal, setMaxVal,
+    minValRef, maxValRef,
+    range
+  }: any = useContext(DiffSliderContext)
 
-    selected_system,
-    selected_difficulty,
-    difficulty,
-    converted,
-
-    filterDifficulty,
-    fromDifficulty,
-    fromDifficultyOrUndefined,
-    difficultiesFor
-  }: any = useContext(DifficultyContext)
-
-  let sliderMinIndex: number
-  let sliderMaxIndex: number
-  selected_system = 'TUFBE'
-  for (difficulty of filterDifficulty(selected_system, minDiff)) {
-    // console.log(`${selected_system}.${minDiff} => ${difficulty}`)
-    sliderMinIndex = difficulty
-
-    let convertedDiff = fromDifficulty('TUFBE', difficulty)
-    // console.log(`${difficulty} => ${convertedDiff}`)
-  }
+  // console.log(levelsData)
 
   // useEffect call to interface with the TUF API, which then returns the level data to be displayed
   useEffect(() => {
@@ -158,6 +157,9 @@ const Levels = (): ReactElement => {
             }
           })
         )
+        // console.log('levelsData = ', levelsData)
+        // console.log('newLevels = ', newLevels)
+        // console.log('[...newLevels] = ', [...newLevels])
 
         // ids of the currently displayed levels
         const existingIds = new Set(levelsData.map((level) => level.id))
@@ -165,9 +167,16 @@ const Levels = (): ReactElement => {
         // the newest levels that aren't already displayed
         const uniqueLevels = newLevels.filter((level) => !existingIds.has(level.id))
         // console.log(uniqueLevels)
+        // console.log(uniqueLevels[1].id)
 
         // appends the newest undisplayed levels to the level data array
+        // console.log('Old levels data ', levelsData)
         setLevelsData((prev) => [...prev, ...uniqueLevels])
+        // if (levelsData.length > 0) setLevelsData((prev) => [...prev, ...uniqueLevels])
+        // else setLevelsData([...newLevels])
+        // console.log('levelsData.length > 0 = ', levelsData.length > 0)
+        // console.log('New levels data ', levelsData)
+
         // checks whether the full response data is longer than the used response data, and sets the bool state
         setHasMore(response.data.count > levelsData.length + newLevels.length)
       } catch (error) {
@@ -229,8 +238,12 @@ const Levels = (): ReactElement => {
     // if the first text character input is a hashtag, and is followed by any number, search by #ID
     if (query[0] == '#' && query.length > 1 && !isNaN(parseInt(query.split([' '][1])[0].slice(1)))) {
       fetchLevelById()
+      // console.log(levelsData, '\nFetch ID')
     } else { // otherwise, just perform a normal search
       fetchLevels()
+      console.log('New levels data ', levelsData)
+
+      // console.log(levelsData, '\nFetch Normal')
     }
     return () => cancel && cancel() // returns the fetch cancel variable and function
   }, [query, sort, minDiff, maxDiff, pageNumber, forceUpdate]) // runs the useEffect if these values are updated
@@ -245,6 +258,7 @@ const Levels = (): ReactElement => {
     setQuery(e.target.value) // sets query to the tracked text input value
     setPageNumber(0)
     setLevelsData([])
+    // console.log('Query = ' + e.target.value)
   }
 
   // inverses the open/close state of the filter menu
@@ -310,6 +324,8 @@ const Levels = (): ReactElement => {
   function resetAll(): void {
     setPageNumber(0)
     setSort('RECENT_DESC')
+    setMinVal(1)
+    setMaxVal(54)
     setQuery('')
     setLevelsData([])
     setLoading(true)
@@ -318,7 +334,7 @@ const Levels = (): ReactElement => {
 
   // focuses the text input element when the input container is clicked
   function focusInput(): void {
-    document.getElementById('input-entry')!.focus()
+    document.getElementById('input-entry')!. focus()
     console.log('Focused Input')
   }
 
@@ -429,7 +445,7 @@ const Levels = (): ReactElement => {
               id="filter-menu"
               className="search-menu"
               style={{
-                height: filterOpen ? '148px' : '0', // update when more sort options are added
+                height: filterOpen ? '160px' : '0', // update when more sort options are added
                 opacity: filterOpen ? '1' : '0'
               }}
             >
@@ -456,8 +472,8 @@ const Levels = (): ReactElement => {
                         min={1}
                         max={60}
                         onChange={({min, max}: { min: number; max: number }) => {
-                          console.log(`min = ${min}, max = ${max}`)
-                          console.log('return minDiff: ' + minDiff + '\nreturn maxDiff: ' + maxDiff)
+                          // console.log(`min = ${min}, max = ${max}`)
+                          // console.log('return minDiff: ' + minDiff + '\nreturn maxDiff: ' + maxDiff)
                         }}
                         system={'TUF'}
                       />
@@ -815,13 +831,13 @@ const Levels = (): ReactElement => {
 
       {/* Level Card Tooltips */}
       <Tooltip id="json-dl" place="bottom" style={{ zIndex: 99999 }}>
-        {t('levels.results.cards.tooltip.json')}
+        {t('levels.results.cards.tooltip.export')}
       </Tooltip>
       <Tooltip id="level-ws" place="bottom" style={{ zIndex: 99999 }}>
         {t('levels.results.cards.tooltip.workshop')}
       </Tooltip>
       <Tooltip id="level-dl" place="bottom" style={{ zIndex: 99999 }}>
-        {t('levels.results.cards.tooltip.direct')}
+        {t('levels.results.cards.tooltip.download')}
       </Tooltip>
       <Tooltip id="level-none" place="bottom" style={{ zIndex: 99999 }}>
         {t('levels.results.cards.tooltip.none')}

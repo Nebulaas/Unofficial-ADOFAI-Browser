@@ -119,7 +119,7 @@ const DifficultyContextProvider = (props) => {
   const difficulties: Record<ADOFAIB, systems> = {
     // the 61 mainline difficulties from L0 to L60
     L0:  { ADOFAIB: 'L0',  INDEX: 0,   TUF: 'P1',  T21C: '1',     GG: '1',    TUFBE: '1' },
-    L1:  { ADOFAIB: 'L1',  INDEX: 1,   TUF: 'P1',  T21C: '2',     GG: '2',    TUFBE: '1' },
+    L1:  { ADOFAIB: 'L1',  INDEX: 1,   TUF: 'P1',  T21C: '2',     GG: '2',    TUFBE: '1' }, //TODO: update TUFBE later
     L2:  { ADOFAIB: 'L2',  INDEX: 2,   TUF: 'P2',  T21C: '3',     GG: '3',    TUFBE: '3' },
     L3:  { ADOFAIB: 'L3',  INDEX: 3,   TUF: 'P3',  T21C: '4',     GG: '4',    TUFBE: '4' },
     L4:  { ADOFAIB: 'L4',  INDEX: 4,   TUF: 'P4',  T21C: '5',     GG: '5',    TUFBE: '5' },
@@ -186,11 +186,9 @@ const DifficultyContextProvider = (props) => {
     impossible: { ADOFAIB: 'impossible', INDEX: '',  TUF: '-21',  T21C: '-21',  GG: '-1', TUFBE: '-21' },
   }
 
-
   type Difficulty = ADOFAIB | INDEX | TUF | T21C | GG | TUFBE
 
   type SystemKey = keyof systems
-
 
   function filterDifficulty(system: SystemKey, difficulty: Difficulty): ADOFAIB[] {
     // return an array of difficulties matching the string for the selected system.
@@ -208,126 +206,44 @@ const DifficultyContextProvider = (props) => {
     return difficulties[difficulty][system]
   }
 
-  function fromDifficultyOrUndefined(system: SystemKey, difficulty: ADOFAIB): Difficulty | undefined {
-    // takes an ADOFAIB difficulty and converts it into the matching ADOFAIB, TUF, T21C or GG difficulty.
-    // if the converted value is an empty string or 'xxx' then return undefined
-    // where 'xxx' would be an empty string (as I have done) or any value you want.
-    // one approach would be to replace the empty string with something like 'unsupported'
-    // or to map unranked, censored and impossible directly through to TUF and GG
-    let value = difficulties[difficulty][system]
-    return value.length == 0 ? undefined : value
-  }
-
   function difficultiesFor(system: SystemKey): Difficulty[] {
     // return all the supported difficulties for a given system
     // by returning all valid values from the record for the system
     //
     // 1. get a list of all of the keys in the record
-    // 2. remove any keys that with empty values for the selected system
-    // 3. now get the system's values for all those keys
+    // 2. get the system's values for all those keys
+    // 3. remove any empty values, and
     // 4. finally remove any duplicates values
     return (Object.keys(difficulties) as Array<ADOFAIB>)
-      .filter(key => difficulties[key][system].length > 0)
       .map(key => difficulties[key][system])
+      .filter(value => `${value}`.length > 0)
       .filter((value, index, values) => index === values.indexOf(value))
   }
 
-
-  // ---------------------------------------------------------------------------
-  // Testing Examples:
-  let selected_system = '' as SystemKey
-  let selected_difficulty = '' as Difficulty
-  let difficulty = '' as ADOFAIB
-  let converted = '' as Difficulty | undefined
-
-  /*console.log('---------------------------------------------------------------')
-  console.log('Get all ADOFAIB difficulties for the selected system difficulty')*/
+  // let selected_system = '' as SystemKey
+  // let selected_difficulty = '' as Difficulty
+  // let difficulty = '' as ADOFAIB
+  // let converted = '' as Difficulty | undefined
 
   // Return ADOFAIB values for TUF.U19
-  // Output: L59
-  /*selected_system = 'TUF'
-  selected_difficulty = 'U19'
-  for (difficulty of filterDifficulty(selected_system, selected_difficulty)) {
-    console.log(`${selected_system}.${selected_difficulty} => ${difficulty}`)
-  }*/
-
-  // Return ADOFAIB difficulties for T21C.21.1+
-  // Output: L47 L48
-  /*selected_system = 'T21C'
-  selected_difficulty = '21.1+'
-  for (difficulty of filterDifficulty(selected_system, selected_difficulty)) {
-    console.log(`${selected_system}.${selected_difficulty} => ${difficulty}`)
-  }
-
-  console.log('---------------------------------------------------------------')
-  console.log('Convert the selected system difficulty into the ADOFAIB difficulty')*/
+  // for (difficulty of filterDifficulty('TUF', 'U19')) {
+  //   console.log(`${'TUF'}.${'U19'} => ${difficulty}`)
+  // }
 
   // Convert L13 difficulty into TUF
-  // Output: TUF.P13
-  /*selected_system = 'T21C'
-  difficulty = 'L13'
-  converted = fromDifficulty(selected_system, difficulty)
-  console.log(`${difficulty} => ${selected_system}.${converted}`)*/
+  // converted = fromDifficulty('T21C', 'L13')
+  // console.log(`${'L13'} => ${'T21C'}.${converted}`)
 
-  // Convert L59 difficulty to GG
-  // Output: GG.59
-  /*selected_system = 'GG'
-  difficulty = 'L59'
-  converted = fromDifficulty(selected_system, difficulty)
-  console.log(`${difficulty} => ${selected_system}.${converted}`)*/
-
-  // Convert impossible difficulty to TUF
-  // Output: T21C.-21
-  /*selected_system = 'TUF'
-  difficulty = 'impossible'
-  converted = fromDifficulty(selected_system, difficulty)
-  console.log(`${difficulty} => ${selected_system}.${converted}`)*/
-
-  // Convert impossible difficulty to T21C
-  // Output: T21C.-21
-  /*selected_system = 'T21C'
-  difficulty = 'impossible'
-  converted = fromDifficulty(selected_system, difficulty)
-  console.log(`${difficulty} => ${selected_system}.${converted}`)*/
-
-  // Display all difficulties for
-  /*console.log('---------------------------------------------------------------')
-  console.log('Get all difficulties available for the selected system')
-
-  selected_system = 'GG'
-  for (converted of difficultiesFor(selected_system)) {
-    console.log(`${selected_system} => ${converted}`)
-  }
-  console.log('^ notice that the empty strings have been filtered out')
-
-  console.log('---------------------------------------------------------------')
-  console.log('handling unsupported levels')*/
+  // Display all difficulties for GG
+  // selected_system = 'GG'
+  // for (converted of difficultiesFor(selected_system)) {
+  //   console.log(`${selected_system} => ${converted}`)
+  // }
+  // console.log('^ notice that the empty strings have been filtered out')
 
   // Convert unranked difficulty to GG
-  // Output: ''
-  /*selected_system = 'GG'
-  difficulty = 'unranked'
-  converted = fromDifficulty(selected_system, difficulty)
-  console.log(`${difficulty} => ${selected_system}.${converted} <-- this will be missing`)*/
-
-  // the conversion above will output an empty string
-  // handle it by checking the converted value directly
-  // or by using the ...OrUndefined version of the function
-  /*if (converted.length === 0) {
-    console.log(`${difficulty} => ${selected_system}.<unsupported>`)
-  } else {
-    // if you did match then you would display va
-    console.log(`${difficulty} => ${selected_system}.${converted} <-- this line should not be executed`);
-  }*/
-
-  // alternatively this version of the function replaces empty strings with undefined
-  /*selected_system = 'GG'
-  difficulty = 'unranked'
-  converted = fromDifficultyOrUndefined(selected_system, difficulty)
-  let convertedValue = converted ? converted : '<unsupported>'
-  // let convertedValue = converted === undefined ? '<unsupported>' : converted
-  console.log(`${difficulty} => ${selected_system}.${convertedValue}`)*/
-
+  // converted = fromDifficulty('GG', 'unranked')
+  // console.log(`${'unranked'} => ${'GG'}.${converted} <-- this will be missing`)
 
   // return the context provider
   return (
@@ -335,14 +251,13 @@ const DifficultyContextProvider = (props) => {
       value={{
         difficulties,
 
-        selected_system,
-        selected_difficulty,
-        difficulty,
-        converted,
+        // selected_system,
+        // selected_difficulty,
+        // difficulty,
+        // converted,
 
         filterDifficulty,
         fromDifficulty,
-        fromDifficultyOrUndefined,
         difficultiesFor
       }}
     >

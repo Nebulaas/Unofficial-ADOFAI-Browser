@@ -152,7 +152,7 @@ const LevelCard: FC<LevelCardProps> = ({
             data-tooltip-id="json-dl"
           >
             <FontAwesomeIcon
-              icon={'fa-solid fa-file-code' as IconProp}
+              icon={'fa-solid fa-file-export' as IconProp}
               size="2xl"
               id="data-json-icon"
               className="card-button-icon"
@@ -174,9 +174,9 @@ const LevelCard: FC<LevelCardProps> = ({
           {dl.includes('https') && (
             <a href={dl} target="_blank" rel="noreferrer" onClick={onAnchorClick} data-tooltip-id="level-dl">
               <FontAwesomeIcon
-                icon={'fa-solid fa-file-arrow-down' as IconProp}
+                icon={'fa-solid fa-download' as IconProp}
                 size="2xl"
-                id="data-ws-icon"
+                id="data-dl-icon"
                 className="card-button-icon"
               />
             </a>
@@ -187,7 +187,7 @@ const LevelCard: FC<LevelCardProps> = ({
               <FontAwesomeIcon
                 icon={'fa-solid fa-ban' as IconProp}
                 size="2xl"
-                id="data-ws-icon"
+                id="data-no-dl-icon"
                 className="card-button-icon"
               />
             </a>
